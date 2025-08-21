@@ -472,6 +472,10 @@
             border: 1px solid #555;
         }
 
+        body.dark-mode .tracker-title {
+            color: #ffffff !important;
+        }
+
         body.dark-mode .calendar-nav-btn:hover {
             background: #555;
         }
@@ -1003,12 +1007,12 @@
         }
 
         .todo-checkbox:hover {
-            border-color: #8FEB60;
+            border-color: #A5F247;
         }
 
         .todo-checkbox.filled {
-            background: #8FEB60;
-            border-color: #8FEB60;
+            background: #A5F247;
+            border-color: #A5F247;
             color: #333;
         }
 
@@ -1202,6 +1206,36 @@
             justify-content: center;
             font-size: 16px;
             flex-shrink: 0;
+        }
+
+        .add-capture-section {
+            margin-top: 16px;
+            text-align: center;
+        }
+
+        .add-capture-btn {
+            background: #A5F247;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .add-capture-btn:hover {
+            background: #95e237;
+            transform: translateY(-1px);
+        }
+
+        .add-icon {
+            font-size: 16px;
+            font-weight: bold;
         }
 
         .capture-input {
@@ -1626,12 +1660,16 @@
         /* Weekly View Responsive Container */
         @media (max-width: 768px) {
             .weekly-view {
-                padding: 8px;
+                padding: 4px;
+                width: 100vw;
+                margin-left: calc(-50vw + 50%);
+                box-sizing: border-box;
             }
 
             .weekly-container {
                 flex-direction: column;
-                gap: 16px;
+                gap: 8px;
+                width: 100%;
             }
 
             .weekly-main-grid {
@@ -1639,12 +1677,40 @@
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
                 scrollbar-width: thin;
+                width: 100%;
+                min-width: 100%;
             }
 
             .weekly-sidebar {
                 order: 1;
                 width: 100%;
                 min-width: unset;
+                padding: 8px;
+            }
+
+            /* Make time grid use full width */
+            .weekly-time-grid {
+                min-width: calc(100vw - 20px);
+                width: 100%;
+            }
+
+            .weekly-day-header-row {
+                min-width: calc(100vw - 20px);
+                width: 100%;
+            }
+
+            /* Adjust time slots for mobile */
+            .time-slot {
+                min-width: 80px;
+                height: 35px;
+            }
+
+            .time-label {
+                min-width: 60px;
+                font-size: 11px;
+                padding: 4px;
+            }
+        }
                 max-width: unset;
             }
 
@@ -2959,8 +3025,6 @@
 
             .distraction-checkbox {
                 width: 32px;
-                height: 32px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -2976,15 +3040,27 @@
                 min-width: 28px;
             }
 
-            /* Ultra-mobile weekly view */
-            .weekly-day-header-row {
-                display: grid;
-                grid-template-columns: 50px repeat(7, minmax(120px, 1fr));
-                min-width: 890px; /* 50px + 7 days * 120px minimum */
+            /* Ultra-mobile weekly view - full screen width */
+            .weekly-view {
+                padding: 2px;
+                width: 100vw;
+                margin-left: calc(-50vw + 50%);
+                box-sizing: border-box;
             }
 
-            .weekly-day-header {
-                padding: 8px 4px;
+            .weekly-time-grid {
+                min-width: calc(100vw - 10px);
+                width: 100%;
+            }
+
+            .weekly-day-header-row {
+                display: grid;
+                grid-template-columns: 45px repeat(7, minmax(90px, 1fr));
+                min-width: calc(100vw - 10px);
+                width: 100%;
+            }
+
+            .weekly-day-header {             padding: 8px 4px;
                 min-height: 80px;
                 font-size: 12px;
             }
@@ -3962,7 +4038,7 @@
                         <div class="calendar-container">
                             <div class="calendar-header">
                                 <button class="calendar-nav" onclick="changeMonth(-1)">‹ Previous</button>
-                                <h3 id="monthYear" style="font-size: 18px; font-weight: 600; color: #333;"></h3>
+                                <h3 id="monthYear" style="font-size: 18px; font-weight: 600; color: #333; text-align: center; flex: 1;"></h3>
                                 <button class="calendar-nav" onclick="changeMonth(1)">Next ›</button>
                             </div>
                             <div class="calendar-grid">
@@ -4007,25 +4083,32 @@
                         <h3 class="section-title">💡 Quick Captures</h3>
                     </div>
                     <div class="section-content">
-                        <div class="capture-item">
-                            <div class="capture-icon">💡</div>
-                            <input type="text" class="capture-input" placeholder="Random idea or thought...">
+                        <div id="captures-container">
+                            <div class="capture-item">
+                                <div class="capture-icon">💡</div>
+                                <input type="text" class="capture-input" placeholder="Random idea or thought...">
+                            </div>
+                            <div class="capture-item">
+                                <div class="capture-icon">📞</div>
+                                <input type="text" class="capture-input" placeholder="Someone to call or contact...">
+                            </div>
+                            <div class="capture-item">
+                                <div class="capture-icon">🛒</div>
+                                <input type="text" class="capture-input" placeholder="Something to buy or remember...">
+                            </div>
+                            <div class="capture-item">
+                                <div class="capture-icon">📚</div>
+                                <input type="text" class="capture-input" placeholder="Something to research or learn...">
+                            </div>
+                            <div class="capture-item">
+                                <div class="capture-icon">✨</div>
+                                <input type="text" class="capture-input" placeholder="Future project or goal...">
+                            </div>
                         </div>
-                        <div class="capture-item">
-                            <div class="capture-icon">📞</div>
-                            <input type="text" class="capture-input" placeholder="Someone to call or contact...">
-                        </div>
-                        <div class="capture-item">
-                            <div class="capture-icon">🛒</div>
-                            <input type="text" class="capture-input" placeholder="Something to buy or remember...">
-                        </div>
-                        <div class="capture-item">
-                            <div class="capture-icon">📚</div>
-                            <input type="text" class="capture-input" placeholder="Something to research or learn...">
-                        </div>
-                        <div class="capture-item">
-                            <div class="capture-icon">✨</div>
-                            <input type="text" class="capture-input" placeholder="Future project or goal...">
+                        <div class="add-capture-section">
+                            <button class="add-capture-btn" onclick="addQuickCapture()">
+                                <span class="add-icon">+</span> Add More
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -4658,19 +4741,8 @@
         }
 
         function toggleHydration(glass, index) {
-            const glasses = document.querySelectorAll('.water-glass');
-            
-            if (glass.classList.contains('filled')) {
-                // Remove this glass and all after it
-                for (let i = index; i < glasses.length; i++) {
-                    glasses[i].classList.remove('filled');
-                }
-            } else {
-                // Fill this glass and all before it
-                for (let i = 0; i <= index; i++) {
-                    glasses[i].classList.add('filled');
-                }
-            }
+            // Toggle individual water drop - each can be selected/unselected independently
+            glass.classList.toggle('filled');
             saveData();
         }
 
@@ -5425,6 +5497,46 @@
                 habitDay.style.background = '#A5F247';
                 habitDay.style.color = '#000';
             }
+        }
+
+        // Add Quick Capture Function
+        function addQuickCapture() {
+            const capturesContainer = document.getElementById('captures-container');
+            const captureCount = capturesContainer.children.length;
+            
+            // Array of icons to cycle through
+            const icons = ['💭', '🎯', '📝', '⚡', '🌟', '🔥', '💡', '🚀', '✨', '📌', '🎨', '🔮'];
+            const placeholders = [
+                'Quick thought or idea...',
+                'Something to remember...',
+                'Task or action item...',
+                'Goal or aspiration...',
+                'Creative inspiration...',
+                'Important note...',
+                'Random capture...',
+                'Future reference...',
+                'Idea to explore...',
+                'Something interesting...'
+            ];
+            
+            // Create new capture item
+            const newCaptureItem = document.createElement('div');
+            newCaptureItem.className = 'capture-item';
+            
+            const icon = icons[captureCount % icons.length];
+            const placeholder = placeholders[captureCount % placeholders.length];
+            
+            newCaptureItem.innerHTML = `
+                <div class="capture-icon">${icon}</div>
+                <input type="text" class="capture-input" placeholder="${placeholder}">
+            `;
+            
+            // Add to container
+            capturesContainer.appendChild(newCaptureItem);
+            
+            // Focus on the new input
+            const newInput = newCaptureItem.querySelector('.capture-input');
+            newInput.focus();
         }
 
         // Initialize enhanced functionality

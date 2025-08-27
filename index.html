@@ -3492,6 +3492,56 @@ body.dark-mode .week-day-title { color: #f1f1f1; }
 }
 </style>
 
+
+<style>
+/* Prevent iOS zoom on focus and ensure fields fit on mobile */
+@media (max-width: 900px){
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="time"],
+  input[type="number"],
+  select, textarea {
+    font-size: 16px !important; /* avoid iOS auto-zoom */
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Stack Daily Plan columns cleanly */
+  #daily-plan .planner-content {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  #daily-plan .left-column,
+  #daily-plan .right-column {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+  }
+
+  /* Make sections scroll-safe without breaking layout */
+  #daily-plan .section {
+    overflow: visible;
+  }
+
+  /* Ensure inner controls don’t overflow */
+  .priority-item,
+  .todo-item,
+  .time-schedule-item,
+  .notes-textarea,
+  .brain-dump-area {
+    max-width: 100%;
+  }
+
+  /* Buttons and pills wrap nicely on mobile */
+  .timer-presets,
+  .week-navigation {
+    flex-wrap: wrap;
+  }
+}
+/* Improve text auto-sizing behavior */
+html, body { -webkit-text-size-adjust: 100%; }
+</style>
+
 </head>
 <body>
     <div class="planner-container">

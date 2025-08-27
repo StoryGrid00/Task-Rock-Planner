@@ -3329,7 +3329,169 @@
     @media(max-width:600px){
       .day-column{flex:0 0 80%;}
     }
-    </style>
+    
+/* === Desktop Weekly Planner: show all data without internal scroll === */
+@media (min-width: 769px) {
+  .weekly-container { height: auto; }
+  .weekly-sidebar { overflow-y: visible; }
+  .weekly-main-grid { overflow-x: visible; width: 100%; }
+  .weekly-planner { overflow-x: visible; }
+  .weekly-time-grid { min-width: 100%; width: 100%; }
+}
+
+    
+        /* Habit Tracker */
+        .habit-tracker {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 16px;
+            
+        }
+        .habit-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 8px;
+        }
+        .habit-row {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 12px;
+            align-items: center;
+        }
+        .habit-days {
+            display: flex;
+            gap: 8px;
+        }
+        .habit-day {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            user-select: none;
+            background: #fff;
+            color: #333;
+            transition: all 0.2s ease;
+        }
+        .habit-day.active {
+            background: #8FEB60;
+            border-color: #8FEB60;
+            color: #000;
+        }
+        .habit-delete {
+            background: transparent;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            font-size: 18px;
+            line-height: 1;
+        }
+        .habit-add-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        /* Dark mode for Habit Tracker */
+        body.dark-mode .habit-tracker {
+            background: #2d2d2d;
+            border-color: #555;
+        }
+        body.dark-mode .habit-day {
+            background: #404040;
+            border-color: #555;
+            color: #e0e0e0;
+        }
+        body.dark-mode .habit-day.active {
+            background: #8FEB60;
+            border-color: #8FEB60;
+            color: #000;
+        }
+        body.dark-mode .habit-delete {
+            border-color: #555;
+            color: #e0e0e0;
+        }
+</style>
+
+<style>
+/* Quick Capture delete button (minimal, non-invasive) */
+.capture-item { position: relative; }
+.capture-delete { position: absolute; right: 8px; top: 8px; background: transparent; border: none; font-size: 18px; line-height: 1; cursor: pointer; color: #999; }
+.capture-delete:hover { color: #333; }
+body.dark-mode .capture-delete { color: #ccc; }
+body.dark-mode .capture-delete:hover { color: #fff; }
+
+/* Ensure Weekly Planner can scroll horizontally across days */
+.weekly-main-grid { overflow-x: auto; }
+.weekly-day-header-row, .weekly-time-grid { min-width: 1040px; }
+
+/* Grocery list (action list) */
+.grocery-list { list-style: none; padding: 0; margin: 0; }
+.grocery-item { display: flex; align-items: center; gap: 8px; padding: 10px; border: 1px solid #e9ecef; border-radius: 8px; margin-bottom: 8px; background: #f8f9fa; }
+.grocery-check { width: 18px; height: 18px; border: 2px solid #dee2e6; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.grocery-check.checked { background: #A5F247; border-color: #A5F247; }
+.grocery-text { flex: 1; border: none; background: transparent; outline: none; font-size: 14px; }
+.grocery-del { background: transparent; border: none; font-size: 18px; cursor: pointer; }
+body.dark-mode .grocery-item { background: #3a3a3a; border-color: #555; }
+body.dark-mode .grocery-text { color: #e0e0e0; }
+</style>
+
+<style>
+/* Persist highlight for selected timer preset */
+.timer-preset.active { 
+    outline: 2px solid #A5F247; 
+    box-shadow: 0 0 0 3px rgba(165,242,71,0.35); 
+}
+body.dark-mode .timer-preset.active {
+    outline-color: #A5F247;
+    box-shadow: 0 0 0 3px rgba(165,242,71,0.25);
+}
+</style>
+
+<style>
+.weekly-scroll { display: flex; gap: 24px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 8px 4px 12px; }
+.week-day-card { min-width: 360px; border: 1px solid #e9ecef; border-radius: 16px; padding: 16px; background: #fff; }
+.week-day-title { font-weight: 700; letter-spacing: 0.04em; color: #333; margin-bottom: 10px; }
+.week-input-row { display: flex; gap: 12px; align-items: center; }
+.week-input-row .weekly-task-input { flex: 1; }
+.week-add-btn { padding: 10px 16px; border-radius: 14px; }
+.week-task-list { list-style: none; padding: 0; margin: 12px 0 0 0; }
+.week-task-item { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border: 1px solid #e9ecef; border-radius: 10px; margin-bottom: 8px; background: #f8f9fa; }
+.week-task-check { width: 18px; height: 18px; border: 2px solid #ced4da; border-radius: 4px; cursor: pointer; display:flex; align-items:center; justify-content:center; }
+.week-task-check.done { background: #A5F247; border-color: #A5F247; }
+.week-task-text { flex: 1; border: none; background: transparent; outline: none; font-size: 14px; }
+.week-task-del { background: transparent; border: none; font-size: 18px; cursor: pointer; }
+body.dark-mode .week-day-card { background: #2d2d2d; border-color: #444; }
+body.dark-mode .week-task-item { background: #3a3a3a; border-color: #555; }
+body.dark-mode .week-day-title { color: #f1f1f1; }
+</style>
+
+
+<style>
+/* Mobile-first responsive tweaks - no visual redesign */
+@media (max-width: 900px){
+  .planner-content{ grid-template-columns: 1fr !important; gap: 16px; }
+  .section{ padding: 16px; }
+  .timer-presets{ flex-wrap: wrap; row-gap: 8px; }
+  .page{ padding: 16px; }
+  .weekly-scroll{ gap: 16px; padding-left: 0; padding-right: 8px; }
+  .week-day-card{ min-width: 280px; }
+  .page-navigation{ padding: 12px; gap: 8px; }
+}
+@media (min-width: 901px){
+  .planner-content{ grid-template-columns: 1fr 1fr; }
+}
+</style>
+
 </head>
 <body>
     <div class="planner-container">
@@ -3466,7 +3628,17 @@
                     </div>
                 </div>
 
-                <!-- Right Column -->
+                
+                                <!-- Habit Tracker -->
+                                <div class="habit-tracker">
+                                    <div class="tracker-title">Habit Tracker</div>
+                                    <div id="habitList" class="habit-list"></div>
+                                    <div class="habit-add-row">
+                                        <input type="text" id="newHabitInput" class="todo-input" placeholder="Add a habit...">
+                                        <button class="modal-btn primary" onclick="addHabit()">Add</button>
+                                    </div>
+                                </div>
+<!-- Right Column -->
                 <div class="right-column">
                     <!-- Schedule -->
                     <div class="section">
@@ -3656,13 +3828,37 @@
                     </div>
 
                     <div class="section">
-                        <div class="section-header">
-                            <h3 class="section-title">📋 Meal Prep & Shopping</h3>
-                        </div>
-                        <div class="section-content">
-                            <textarea class="meal-prep-textarea" placeholder="Grocery list, meal prep ideas, cooking notes..."></textarea>
-                        </div>
-                    </div>
+  <div class="section-header">
+    <h3 class="section-title">🛒 Grocery List</h3>
+  </div>
+  <div class="section-content">
+    <ul id="groceryList" class="grocery-list"></ul>
+    <div class="add-capture-section" style="margin-top:12px;text-align:left">
+      <button class="add-capture-btn" onclick="addGroceryItem()">
+        <span class="add-icon">+</span> Add Item
+      </button>
+      <span style="font-size:12px;color:#666;margin-left:8px;">Tip: emojis welcome (🥑 🍞 ☕)</span>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <h3 class="section-title">🍳 Meal Prep Ideas</h3>
+  </div>
+  <div class="section-content">
+    <textarea id="mealPrepIdeas" class="meal-prep-textarea" placeholder="Batch recipes, prep steps, make-ahead items..."></textarea>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <h3 class="section-title">👩‍🍳 Cooking Notes</h3>
+  </div>
+  <div class="section-content">
+    <textarea id="cookingNotes" class="meal-prep-textarea" placeholder="Recipe tweaks, timing, what worked, what to change..."></textarea>
+  </div>
+</div>
                 </div>
 
                 <!-- Right Column - This Week's Meal Plan -->
@@ -3710,521 +3906,74 @@
 
         <!-- Page 3: Weekly View -->
         <div id="weekly-view" class="page">
-            <div class="weekly-container">
-                <!-- Left Sidebar: Weekly Planning -->
-                <div class="weekly-sidebar">
-                    <div class="weekly-priorities-section">
-                        <h3 class="sidebar-title">📅 WEEKLY PRIORITIES</h3>
-                        <div class="weekly-priority-item">
-                            <input type="text" class="weekly-priority-input" placeholder="Add your top priority...">
-                        </div>
-                        <div class="weekly-priority-item">
-                            <input type="text" class="weekly-priority-input" placeholder="Add second priority...">
-                        </div>
-                        <div class="weekly-priority-item">
-                            <input type="text" class="weekly-priority-input" placeholder="Add third priority...">
-                        </div>
-                    </div>
-
-                    <div class="weekly-tasks-section">
-                        <h3 class="sidebar-title">✅ WEEKLY TASK LIST</h3>
-                        <div class="weekly-task-item">
-                            <div class="task-checkbox-weekly" onclick="toggleWeeklyTaskCheck(this)"></div>
-                            <input type="text" class="weekly-task-input" placeholder="Add task...">
-                        </div>
-                        <div class="weekly-task-item">
-                            <div class="task-checkbox-weekly" onclick="toggleWeeklyTaskCheck(this)"></div>
-                            <input type="text" class="weekly-task-input" placeholder="Add task...">
-                        </div>
-                        <div class="weekly-task-item">
-                            <div class="task-checkbox-weekly" onclick="toggleWeeklyTaskCheck(this)"></div>
-                            <input type="text" class="weekly-task-input" placeholder="Add task...">
-                        </div>
-                        <div class="weekly-task-item">
-                            <div class="task-checkbox-weekly" onclick="toggleWeeklyTaskCheck(this)"></div>
-                            <input type="text" class="weekly-task-input" placeholder="Add task...">
-                        </div>
-                        <div class="weekly-task-item">
-                            <div class="task-checkbox-weekly" onclick="toggleWeeklyTaskCheck(this)"></div>
-                            <input type="text" class="weekly-task-input" placeholder="Add task...">
-                        </div>
-                        <div class="weekly-task-item">
-                            <div class="task-checkbox-weekly" onclick="toggleWeeklyTaskCheck(this)"></div>
-                            <input type="text" class="weekly-task-input" placeholder="Add task...">
-                        </div>
-                        <div class="weekly-task-item">
-                            <div class="task-checkbox-weekly" onclick="toggleWeeklyTaskCheck(this)"></div>
-                            <input type="text" class="weekly-task-input" placeholder="Add task...">
-                        </div>
-                    </div>
-
-                    <div class="habits-section">
-                        <h3 class="sidebar-title">🔄 HABITS</h3>
-                        <div class="habit-tracker">
-                            <div class="habit-row">
-                                <input type="text" class="habit-label-input" placeholder="Habit 1" value="Gym">
-                                <div class="habit-days">
-                                    <div class="habit-day" data-day="0" onclick="toggleHabit(this)">S</div>
-                                    <div class="habit-day" data-day="1" onclick="toggleHabit(this)">M</div>
-                                    <div class="habit-day" data-day="2" onclick="toggleHabit(this)">T</div>
-                                    <div class="habit-day" data-day="3" onclick="toggleHabit(this)">W</div>
-                                    <div class="habit-day" data-day="4" onclick="toggleHabit(this)">T</div>
-                                    <div class="habit-day" data-day="5" onclick="toggleHabit(this)">F</div>
-                                    <div class="habit-day" data-day="6" onclick="toggleHabit(this)">S</div>
-                                </div>
-                            </div>
-                            <div class="habit-row">
-                                <input type="text" class="habit-label-input" placeholder="Habit 2" value="Read">
-                                <div class="habit-days">
-                                    <div class="habit-day" data-day="0" onclick="toggleHabit(this)">S</div>
-                                    <div class="habit-day" data-day="1" onclick="toggleHabit(this)">M</div>
-                                    <div class="habit-day" data-day="2" onclick="toggleHabit(this)">T</div>
-                                    <div class="habit-day" data-day="3" onclick="toggleHabit(this)">W</div>
-                                    <div class="habit-day" data-day="4" onclick="toggleHabit(this)">T</div>
-                                    <div class="habit-day" data-day="5" onclick="toggleHabit(this)">F</div>
-                                    <div class="habit-day" data-day="6" onclick="toggleHabit(this)">S</div>
-                                </div>
-                            </div>
-                            <div class="habit-row">
-                                <input type="text" class="habit-label-input" placeholder="Habit 3" value="Water">
-                                <div class="habit-days">
-                                    <div class="habit-day" data-day="0" onclick="toggleHabit(this)">S</div>
-                                    <div class="habit-day" data-day="1" onclick="toggleHabit(this)">M</div>
-                                    <div class="habit-day" data-day="2" onclick="toggleHabit(this)">T</div>
-                                    <div class="habit-day" data-day="3" onclick="toggleHabit(this)">W</div>
-                                    <div class="habit-day" data-day="4" onclick="toggleHabit(this)">T</div>
-                                    <div class="habit-day" data-day="5" onclick="toggleHabit(this)">F</div>
-                                    <div class="habit-day" data-day="6" onclick="toggleHabit(this)">S</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="notes-section">
-                        <h3 class="sidebar-title">📝 NOTES</h3>
-                        <textarea class="weekly-notes" placeholder="Add your weekly notes here..."></textarea>
-                    </div>
-                </div>
-
-                <!-- Main Weekly Grid -->
-                <div class="weekly-main-grid">
-                    <!-- Days of the Week Headers -->
-                    <div class="weekly-day-header-row">
-                        <div class="time-header-cell"></div>
-                        <div class="weekly-day-header monday-header">
-                            <h3>MON</h3>
-                            <div class="day-priorities">
-                                <textarea class="priority-note priority-pink" placeholder="Top priorities..."></textarea>
-                            </div>
-                        </div>
-                        <div class="weekly-day-header tuesday-header">
-                            <h3>TUE</h3>
-                            <div class="day-priorities">
-                                <textarea class="priority-note priority-green" placeholder="Top priorities..."></textarea>
-                            </div>
-                        </div>
-                        <div class="weekly-day-header wednesday-header">
-                            <h3>WED</h3>
-                            <div class="day-priorities">
-                                <textarea class="priority-note priority-purple" placeholder="Top priorities..."></textarea>
-                            </div>
-                        </div>
-                        <div class="weekly-day-header thursday-header">
-                            <h3>THU</h3>
-                            <div class="day-priorities">
-                                <textarea class="priority-note priority-blue" placeholder="Top priorities..."></textarea>
-                            </div>
-                        </div>
-                        <div class="weekly-day-header friday-header">
-                            <h3>FRI</h3>
-                            <div class="day-priorities">
-                                <textarea class="priority-note priority-coral" placeholder="Top priorities..."></textarea>
-                            </div>
-                        </div>
-                        <div class="weekly-day-header saturday-header">
-                            <h3>SAT</h3>
-                            <div class="day-priorities">
-                                <textarea class="priority-note priority-yellow" placeholder="Top priorities..."></textarea>
-                            </div>
-                        </div>
-                        <div class="weekly-day-header sunday-header">
-                            <h3>SUN</h3>
-                            <div class="day-priorities">
-                                <textarea class="priority-note priority-mint" placeholder="Top priorities..."></textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Time Grid -->
-                    <div class="weekly-time-grid">
-                        <!-- Time slots from 12:00 AM to 11:00 PM -->
-                        <div class="time-row" data-time="0:00">
-                            <div class="time-label">12:00 AM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="1:00">
-                            <div class="time-label">1:00 AM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="2:00">
-                            <div class="time-label">2:00 AM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="3:00">
-                            <div class="time-label">3:00 AM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="4:00">
-                            <div class="time-label">4:00 AM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="5:00">
-                            <div class="time-label">5:00 AM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="6:00">
-                            <div class="time-label">6:00 AM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="7:00">
-                            <div class="time-label">7:00 AM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="8:00">
-                            <div class="time-label">8:00 AM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="9:00">
-                            <div class="time-label">9:00 AM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="10:00">
-                            <div class="time-label">10:00</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="11:00">
-                            <div class="time-label">11:00</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="12:00">
-                            <div class="time-label">12:00</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="12:30">
-                            <div class="time-label">12:30</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="13:00">
-                            <div class="time-label">1:00 PM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="13:30">
-                            <div class="time-label">1:30 PM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="14:00">
-                            <div class="time-label">2:00 PM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="14:30">
-                            <div class="time-label">2:30 PM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="15:00">
-                            <div class="time-label">3:00 PM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="15:30">
-                            <div class="time-label">3:30 PM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="16:00">
-                            <div class="time-label">4:00 PM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="16:30">
-                            <div class="time-label">4:30 PM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="17:00">
-                            <div class="time-label">5:00 PM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="17:30">
-                            <div class="time-label">5:30 PM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="18:00">
-                            <div class="time-label">6:00 PM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="18:30">
-                            <div class="time-label">6:30 PM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="19:00">
-                            <div class="time-label">7:00 PM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="19:30">
-                            <div class="time-label">7:30 PM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="20:00">
-                            <div class="time-label">8:00 PM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="20:30">
-                            <div class="time-label">8:30 PM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="21:00">
-                            <div class="time-label">9:00 PM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="21:30">
-                            <div class="time-label">9:30 PM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="22:00">
-                            <div class="time-label">10:00 PM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="22:30">
-                            <div class="time-label">10:30 PM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                        <div class="time-row" data-time="23:00">
-                            <div class="time-label">11:00 PM</div>
-                            <div class="time-slot monday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot tuesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot wednesday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot thursday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot friday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot saturday-slot" onclick="addTimeSlotTask(this)"></div>
-                            <div class="time-slot sunday-slot" onclick="addTimeSlotTask(this)"></div>
-                        </div>
-                    </div>
-
-                    <!-- Bottom Notes Section -->
-                    <div class="weekly-bottom-notes">
-                        <textarea class="bottom-note note-blue" placeholder="Notes..."></textarea>
-                        <textarea class="bottom-note note-purple" placeholder="Notes..."></textarea>
-                        <textarea class="bottom-note note-blue" placeholder="Notes..."></textarea>
-                        <textarea class="bottom-note note-coral" placeholder="Notes..."></textarea>
-                        <textarea class="bottom-note note-yellow" placeholder="Notes..."></textarea>
-                        <textarea class="bottom-note note-mint" placeholder="Notes..."></textarea>
-                        <textarea class="bottom-note note-blue" placeholder="Notes..."></textarea>
-                    </div>
-                </div>
+  <div class="planner-content">
+    <div class="section full-width-section">
+      <div class="section-header">
+        <h3 class="section-title">🗓️ Weekly Planner</h3>
+      </div>
+      <div class="section-content">
+        <div class="weekly-scroll" id="weeklyScroll">
+          <div class="week-day-card" data-day="0">
+            <div class="week-day-title">SUN</div>
+            <div class="week-input-row">
+              <input type="text" class="weekly-task-input" placeholder="Add task…">
+              <button class="add-capture-btn week-add-btn">Add</button>
             </div>
+            <ul class="week-task-list"></ul>
+          </div>
+          <div class="week-day-card" data-day="1">
+            <div class="week-day-title">MON</div>
+            <div class="week-input-row">
+              <input type="text" class="weekly-task-input" placeholder="Add task…">
+              <button class="add-capture-btn week-add-btn">Add</button>
+            </div>
+            <ul class="week-task-list"></ul>
+          </div>
+          <div class="week-day-card" data-day="2">
+            <div class="week-day-title">TUE</div>
+            <div class="week-input-row">
+              <input type="text" class="weekly-task-input" placeholder="Add task…">
+              <button class="add-capture-btn week-add-btn">Add</button>
+            </div>
+            <ul class="week-task-list"></ul>
+          </div>
+          <div class="week-day-card" data-day="3">
+            <div class="week-day-title">WED</div>
+            <div class="week-input-row">
+              <input type="text" class="weekly-task-input" placeholder="Add task…">
+              <button class="add-capture-btn week-add-btn">Add</button>
+            </div>
+            <ul class="week-task-list"></ul>
+          </div>
+          <div class="week-day-card" data-day="4">
+            <div class="week-day-title">THU</div>
+            <div class="week-input-row">
+              <input type="text" class="weekly-task-input" placeholder="Add task…">
+              <button class="add-capture-btn week-add-btn">Add</button>
+            </div>
+            <ul class="week-task-list"></ul>
+          </div>
+          <div class="week-day-card" data-day="5">
+            <div class="week-day-title">FRI</div>
+            <div class="week-input-row">
+              <input type="text" class="weekly-task-input" placeholder="Add task…">
+              <button class="add-capture-btn week-add-btn">Add</button>
+            </div>
+            <ul class="week-task-list"></ul>
+          </div>
+          <div class="week-day-card" data-day="6">
+            <div class="week-day-title">SAT</div>
+            <div class="week-input-row">
+              <input type="text" class="weekly-task-input" placeholder="Add task…">
+              <button class="add-capture-btn week-add-btn">Add</button>
+            </div>
+            <ul class="week-task-list"></ul>
+          </div>
         </div>
-
-        <!-- Page 4: Monthly View -->
+      </div>
+    </div>
+  </div>
+</div><!-- Page 4: Monthly View -->
         <div id="monthly-view" class="page">
             <div class="planner-content single-column">
                 <div class="section full-width-section">
@@ -4463,6 +4212,7 @@
         let timerMinutes = 25;
         let timerSeconds = 0;
         let timerRunning = false;
+        let originalTimerMinutes = timerMinutes;
         let selectedCalendarDate = null;
         let calendarEvents = {};
         let editingEventId = null;
@@ -4745,7 +4495,7 @@
             updateCalendar();
             
             // If the current date is not in the new month, update it to the first day of the new month
-            const currentDateObj = new Date(currentDate);
+            const currentDateObj = new Date(currentDate + "T00:00:00");
             if (currentDateObj.getMonth() !== currentMonth.getMonth() || 
                 currentDateObj.getFullYear() !== currentMonth.getFullYear()) {
                 currentDate = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1).toISOString().split('T')[0];
@@ -4958,6 +4708,7 @@
         // Timer functions
         function setTimer(minutes) {
             timerMinutes = minutes;
+            originalTimerMinutes = minutes;
             timerSeconds = 0;
             updateTimerDisplay();
         }
@@ -5839,7 +5590,7 @@
             if (pageId === 'monthly-view') {
                 setTimeout(() => {
                     // Set currentMonth to match the selected date
-                    const selectedDate = new Date(currentDate);
+                    const selectedDate = new Date(currentDate + "T00:00:00");
                     currentMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1);
                     updateCalendar();
                     console.log('Monthly view initialized with date:', currentDate);
@@ -5872,7 +5623,411 @@
         col.querySelector('.tasks').appendChild(div);
       }
     }
-    </script>
+    
+    // === Habit Tracker ===
+    const HABITS_KEY = 'taskRock_habits_v1';
+    let habits = [];
+
+    function loadHabits(){
+        try{
+            const saved = localStorage.getItem(HABITS_KEY);
+            if(saved){
+                habits = JSON.parse(saved);
+            } else {
+                habits = [
+                    { name: 'Gym', days: [false,false,false,false,false,false,false] },
+                    { name: 'Read 20 m', days: [false,false,false,false,false,false,false] },
+                    { name: 'Hydrate x8', days: [false,false,false,false,false,false,false] }
+                ];
+            }
+        } catch(e){
+            habits = [];
+        }
+        renderHabits();
+    }
+
+    function saveHabits(){
+        localStorage.setItem(HABITS_KEY, JSON.stringify(habits));
+    }
+
+    function addHabit(){
+        const input = document.getElementById('newHabitInput');
+        const name = (input.value || '').trim();
+        if(!name) return;
+        habits.push({ name, days: [false,false,false,false,false,false,false] });
+        input.value='';
+        saveHabits();
+        renderHabits();
+    }
+
+    function deleteHabit(index){
+        habits.splice(index,1);
+        saveHabits();
+        renderHabits();
+    }
+
+    function toggleHabitDay(index, dayIndex){
+        habits[index].days[dayIndex] = !habits[index].days[dayIndex];
+        saveHabits();
+        renderHabits();
+    }
+
+    function renameHabit(index, el){
+        habits[index].name = el.value;
+        saveHabits();
+    }
+
+    function renderHabits(){
+        const list = document.getElementById('habitList');
+        if(!list) return;
+        list.innerHTML = '';
+        const dayLabels = ['S','M','T','W','T','F','S'];
+        habits.forEach((h, i) => {
+            const row = document.createElement('div');
+            row.className = 'habit-row';
+
+            const nameInput = document.createElement('input');
+            nameInput.className = 'todo-input';
+            nameInput.value = h.name;
+            nameInput.placeholder = 'Habit name';
+            nameInput.oninput = () => renameHabit(i, nameInput);
+            row.appendChild(nameInput);
+
+            const days = document.createElement('div');
+            days.className = 'habit-days';
+            dayLabels.forEach((lbl, dIdx) => {
+                const b = document.createElement('div');
+                b.className = 'habit-day' + (h.days[dIdx] ? ' active' : '');
+                b.textContent = lbl;
+                b.onclick = () => toggleHabitDay(i, dIdx);
+                days.appendChild(b);
+            });
+            row.appendChild(days);
+
+            const del = document.createElement('button');
+            del.className = 'habit-delete';
+            del.title = 'Delete habit';
+            del.textContent = '×';
+            del.onclick = () => deleteHabit(i);
+            row.appendChild(del);
+
+            list.appendChild(row);
+        });
+    }
+
+    // Initialize Habit Tracker on load
+    document.addEventListener('DOMContentLoaded', loadHabits);
+</script>
+
+<script>
+(function(){
+  // --- Fix: Reset button returns timer to its initial preset ---
+  window.resetTimer = function(){
+    try {
+      timerRunning = false;
+      clearInterval(timerInterval);
+      var startBtn = document.getElementById('startBtn');
+      var pauseBtn = document.getElementById('pauseBtn');
+      if (startBtn) startBtn.style.display = 'inline-block';
+      if (pauseBtn) pauseBtn.style.display = 'none';
+      // Reset to the last selected preset (fallback to 25)
+      timerMinutes = (typeof originalTimerMinutes !== 'undefined' && originalTimerMinutes) ? originalTimerMinutes : 25;
+      timerSeconds = 0;
+      if (typeof updateTimerDisplay === 'function') updateTimerDisplay();
+    } catch (e) { console.warn('resetTimer override error', e); }
+  };
+
+  // --- Quick Captures: allow deleting entries ---
+  function attachDeleteButton(item){
+    if (!item || item.querySelector('.capture-delete')) return;
+    var btn = document.createElement('button');
+    btn.className = 'capture-delete';
+    btn.type = 'button';
+    btn.title = 'Delete';
+    btn.textContent = '×';
+    btn.addEventListener('click', function(){ item.remove(); });
+    item.appendChild(btn);
+  }
+  function enhanceQuickCaptures(){
+    var items = document.querySelectorAll('#captures-container .capture-item');
+    items.forEach(attachDeleteButton);
+  }
+  // Override addQuickCapture to include delete button while preserving existing behavior
+  var _originalAddQuickCapture = window.addQuickCapture;
+  window.addQuickCapture = function(){
+    try {
+      var container = document.getElementById('captures-container');
+      if (!container) { if (_originalAddQuickCapture) return _originalAddQuickCapture(); else return; }
+      var icons = ['💭','🎯','📝','⚡','🌟','🔥','💡','🚀','✨','📌','🎨','🔮'];
+      var placeholders = [
+        'Quick thought or idea...','Something to remember...','Task or action item...','Goal or aspiration...',
+        'Creative inspiration...','Important note...','Random capture...','Future reference...',
+        'Idea to explore...','Something interesting...'
+      ];
+      var idx = container.children.length % icons.length;
+      var wrap = document.createElement('div'); wrap.className = 'capture-item';
+      var ic = document.createElement('div'); ic.className = 'capture-icon'; ic.textContent = icons[idx];
+      var input = document.createElement('input'); input.type = 'text'; input.className = 'capture-input'; input.placeholder = placeholders[idx];
+      wrap.appendChild(ic); wrap.appendChild(input); attachDeleteButton(wrap);
+      container.appendChild(wrap);
+    } catch (e) {
+      // Fallback to original if something goes wrong
+      if (_originalAddQuickCapture) _originalAddQuickCapture();
+    }
+  };
+  document.addEventListener('DOMContentLoaded', enhanceQuickCaptures);
+
+  // --- Grocery list: action list with emoji support ---
+  function renderGrocery(){
+    var ul = document.getElementById('groceryList');
+    if (!ul) return;
+    ul.innerHTML = '';
+    (window._groceryItems || []).forEach(function(it, idx){
+      var li = document.createElement('li'); li.className = 'grocery-item';
+      var check = document.createElement('div');
+      check.className = 'grocery-check' + (it && it.done ? ' checked' : '');
+      check.addEventListener('click', function(){ it.done = !it.done; renderGrocery(); });
+      var input = document.createElement('input'); input.className = 'grocery-text'; input.value = it && it.text ? it.text : ''; input.placeholder = 'Add item… (🥑 🍞 ☕)';
+      input.addEventListener('input', function(){ it.text = input.value; });
+      var del = document.createElement('button'); del.className = 'grocery-del'; del.title = 'Delete'; del.textContent = '×';
+      del.addEventListener('click', function(){ window._groceryItems.splice(idx,1); renderGrocery(); });
+      li.appendChild(check); li.appendChild(input); li.appendChild(del);
+      ul.appendChild(li);
+    });
+  }
+  window.addGroceryItem = function(){
+    window._groceryItems = window._groceryItems || [];
+    window._groceryItems.push({text:'', done:false});
+    renderGrocery();
+  };
+  document.addEventListener('DOMContentLoaded', function(){
+    window._groceryItems = window._groceryItems || [];
+    renderGrocery();
+  });
+
+  // --- Persist new Meal Planner sections alongside existing save/load ---
+  var _origSave = window.saveDataForDate;
+  var _origLoad = window.loadDataForDate;
+  window.saveDataForDate = function(dateString){
+    try { if (_origSave) _origSave(dateString); } catch(e){}
+    try {
+      localStorage.setItem('taskRock_grocery_' + dateString, JSON.stringify(window._groceryItems || []));
+      var mpi = document.getElementById('mealPrepIdeas'); if (mpi) localStorage.setItem('taskRock_mealPrep_' + dateString, mpi.value || '');
+      var cn = document.getElementById('cookingNotes'); if (cn) localStorage.setItem('taskRock_cookingNotes_' + dateString, cn.value || '');
+    } catch(e){ console.warn('Save extras failed', e); }
+  };
+  window.loadDataForDate = function(dateString){
+    try { if (_origLoad) _origLoad(dateString); } catch(e){}
+    try {
+      window._groceryItems = JSON.parse(localStorage.getItem('taskRock_grocery_' + dateString) || '[]');
+    } catch(e){ window._groceryItems = []; }
+    renderGrocery();
+    var mpi = document.getElementById('mealPrepIdeas'); if (mpi) mpi.value = localStorage.getItem('taskRock_mealPrep_' + dateString) || '';
+    var cn = document.getElementById('cookingNotes'); if (cn) cn.value = localStorage.getItem('taskRock_cookingNotes_' + dateString) || '';
+  };
+})();
+</script>
+
+
+<script>
+(function(){
+  function markActivePreset(minutes){
+    try{
+      var btns = document.querySelectorAll('.timer-preset');
+      btns.forEach(function(b){
+        // Try to derive minutes from button text like '25 min'
+        var m = parseInt((b.textContent||'').replace(/\D+/g,''), 10);
+        if (!isNaN(m) && m === minutes) b.classList.add('active');
+        else b.classList.remove('active');
+      });
+    } catch(e){}
+  }
+
+  // Attach click listeners to also mark active immediately
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.timer-preset').forEach(function(b){
+      b.addEventListener('click', function(){
+        var m = parseInt((b.textContent||'').replace(/\D+/g,''), 10);
+        if (!isNaN(m)) markActivePreset(m);
+      });
+    });
+    // Initial highlight using default or previously chosen preset
+    if (typeof originalTimerMinutes !== 'undefined') markActivePreset(originalTimerMinutes);
+  });
+
+  // Wrap/override setTimer to keep behavior + add highlighting
+  var _origSetTimer = window.setTimer;
+  window.setTimer = function(minutes){
+    if (typeof _origSetTimer === 'function') _origSetTimer(minutes);
+    markActivePreset(minutes);
+  };
+})();
+</script>
+
+
+<script>
+(function(){
+  function getWeekKey(dateString){
+    try{
+      var d = new Date(dateString + "T00:00:00");
+      var day = d.getDay(); // 0=Sun
+      var sun = new Date(d); sun.setDate(d.getDate()-day);
+      var iso = sun.toISOString().slice(0,10);
+      return iso;
+    }catch(e){ return dateString; }
+  }
+  function ensureStore(){
+    if (!window._weeklyTasksNew) window._weeklyTasksNew = {0:[],1:[],2:[],3:[],4:[],5:[],6:[]};
+  }
+  function weekStorageKey(dateString){
+    return 'taskRock_weeklyNew_' + getWeekKey(dateString || (window.currentDate || new Date().toISOString().slice(0,10)));
+  }
+  function saveWeekly(){
+    try { localStorage.setItem(weekStorageKey(window.currentDate), JSON.stringify(window._weeklyTasksNew||{})); } catch(e){}
+  }
+  function loadWeekly(dateString){
+    ensureStore();
+    try {
+      var data = JSON.parse(localStorage.getItem(weekStorageKey(dateString)) || '{}');
+      if (data && typeof data === 'object') window._weeklyTasksNew = Object.assign({0:[],1:[],2:[],3:[],4:[],5:[],6:[]}, data);
+    } catch(e){ ensureStore(); }
+    renderWeekly();
+  }
+  function renderWeekly(){
+    ensureStore();
+    document.querySelectorAll('.week-day-card').forEach(function(card){
+      var day = parseInt(card.getAttribute('data-day'),10);
+      var ul = card.querySelector('.week-task-list');
+      ul.innerHTML = '';
+      (window._weeklyTasksNew[day]||[]).forEach(function(item, idx){
+        var li = document.createElement('li'); li.className='week-task-item';
+        var c = document.createElement('div'); c.className='week-task-check' + (item.done?' done':''); c.addEventListener('click', function(){ item.done=!item.done; saveWeekly(); renderWeekly(); });
+        var t = document.createElement('input'); t.className='week-task-text'; t.value=item.text||''; t.placeholder='Task…'; t.addEventListener('input', function(){ item.text=t.value; saveWeekly(); });
+        var del = document.createElement('button'); del.className='week-task-del'; del.title='Delete'; del.textContent='×'; del.addEventListener('click', function(){ window._weeklyTasksNew[day].splice(idx,1); saveWeekly(); renderWeekly(); });
+        li.appendChild(c); li.appendChild(t); li.appendChild(del);
+        ul.appendChild(li);
+      });
+    });
+  }
+  function wireAddButtons(){
+    document.querySelectorAll('.week-day-card').forEach(function(card){
+      var day = parseInt(card.getAttribute('data-day'),10);
+      var add = card.querySelector('.week-add-btn');
+      var input = card.querySelector('.weekly-task-input');
+      function addTask(){
+        var val = (input.value||'').trim();
+        if(!val) return;
+        ensureStore();
+        window._weeklyTasksNew[day].push({text:val, done:false});
+        input.value = '';
+        saveWeekly();
+        renderWeekly();
+      }
+      add.addEventListener('click', addTask);
+      input.addEventListener('keypress', function(e){ if(e.key==='Enter'){ e.preventDefault(); addTask(); } });
+    });
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    wireAddButtons();
+    loadWeekly(window.currentDate || new Date().toISOString().slice(0,10));
+  });
+
+  // Integrate with existing save/load so week data follows date changes
+  var _origLoad = window.loadDataForDate;
+  window.loadDataForDate = function(dateString){
+    try { if (_origLoad) _origLoad(dateString); } catch(e){}
+    loadWeekly(dateString);
+  };
+  var _origSave = window.saveDataForDate;
+  window.saveDataForDate = function(dateString){
+    try { if (_origSave) _origSave(dateString); } catch(e){}
+    saveWeekly();
+  };
+  window.renderWeekly = renderWeekly;
+})();
+</script>
+
+
+<script>
+// Robust delegation for Weekly Planner add/remove/toggle/edit
+(function(){
+  function ensureStore(){ if(!window._weeklyTasksNew) window._weeklyTasksNew={0:[],1:[],2:[],3:[],4:[],5:[],6:[]}; }
+  function weekStorageKey(){
+    var d = (window.currentDate || new Date().toISOString().slice(0,10));
+    try{ var dt = new Date(d + "T00:00:00"); var sun = new Date(dt); sun.setDate(dt.getDate()-dt.getDay()); d = sun.toISOString().slice(0,10);}catch(e){}
+    return 'taskRock_weeklyNew_' + d;
+  }
+  function saveWeekly(){ try{ localStorage.setItem(weekStorageKey(), JSON.stringify(window._weeklyTasksNew||{})); }catch(e){} }
+  function refresh(){ if(typeof renderWeekly === 'function'){ renderWeekly(); } }
+  document.addEventListener('click', function(e){
+    // Add
+    var addBtn = e.target.closest('.week-add-btn');
+    if(addBtn){
+      var card = addBtn.closest('.week-day-card'); if(!card) return;
+      var day = parseInt(card.getAttribute('data-day'),10);
+      var input = card.querySelector('.weekly-task-input');
+      var val = (input && input.value || '').trim();
+      if(!val){ return; }
+      ensureStore();
+      (window._weeklyTasksNew[day] = window._weeklyTasksNew[day] || []).push({text:val, done:false});
+      if(input) input.value='';
+      saveWeekly(); refresh();
+      return;
+    }
+    // Delete
+    var delBtn = e.target.closest('.week-task-del');
+    if(delBtn){
+      var li = delBtn.closest('li.week-task-item'); if(!li) return;
+      var card = delBtn.closest('.week-day-card'); if(!card) return;
+      var day = parseInt(card.getAttribute('data-day'),10);
+      var list = Array.from(card.querySelectorAll('li.week-task-item'));
+      var idx = list.indexOf(li);
+      if(idx > -1){
+        ensureStore(); (window._weeklyTasksNew[day]||[]).splice(idx,1);
+        saveWeekly(); refresh();
+      }
+      return;
+    }
+    // Toggle check
+    var chk = e.target.closest('.week-task-check');
+    if(chk){
+      var li = chk.closest('li.week-task-item'); if(!li) return;
+      var card = chk.closest('.week-day-card'); if(!card) return;
+      var day = parseInt(card.getAttribute('data-day'),10);
+      var list = Array.from(card.querySelectorAll('li.week-task-item'));
+      var idx = list.indexOf(li);
+      ensureStore();
+      var arr = window._weeklyTasksNew[day]||[];
+      if(arr[idx]){ arr[idx].done = !arr[idx].done; }
+      saveWeekly(); refresh();
+      return;
+    }
+  }, true);
+  // Inline edit updates
+  document.addEventListener('input', function(e){
+    var inp = e.target.closest('.week-task-text');
+    if(!inp) return;
+    var li = inp.closest('li.week-task-item'); if(!li) return;
+    var card = inp.closest('.week-day-card'); if(!card) return;
+    var day = parseInt(card.getAttribute('data-day'),10);
+    var list = Array.from(card.querySelectorAll('li.week-task-item'));
+    var idx = list.indexOf(li);
+    ensureStore();
+    var arr = window._weeklyTasksNew[day]||[];
+    if(arr[idx]){ arr[idx].text = inp.value; }
+    saveWeekly();
+  }, true);
+
+  // Make all scroll containers scrollable on small screens
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.page, .section, .weekly-scroll').forEach(function(el){
+      el.style.overflow = el.style.overflow || 'auto';
+      el.style.webkitOverflowScrolling = 'touch';
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
 

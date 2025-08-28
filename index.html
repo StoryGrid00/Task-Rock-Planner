@@ -3423,41 +3423,12 @@
 </style>
 
 <style>
-/* Quick Capture delete button (minimal, non-invasive) */
 .capture-item { position: relative; }
 .capture-delete { position: absolute; right: 8px; top: 8px; background: transparent; border: none; font-size: 18px; line-height: 1; cursor: pointer; color: #999; }
 .capture-delete:hover { color: #333; }
 body.dark-mode .capture-delete { color: #ccc; }
 body.dark-mode .capture-delete:hover { color: #fff; }
 
-/* Ensure Weekly Planner can scroll horizontally across days */
-.weekly-main-grid { overflow-x: auto; }
-.weekly-day-header-row, .weekly-time-grid { min-width: 1040px; }
-
-/* Grocery list (action list) */
-.grocery-list { list-style: none; padding: 0; margin: 0; }
-.grocery-item { display: flex; align-items: center; gap: 8px; padding: 10px; border: 1px solid #e9ecef; border-radius: 8px; margin-bottom: 8px; background: #f8f9fa; }
-.grocery-check { width: 18px; height: 18px; border: 2px solid #dee2e6; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-.grocery-check.checked { background: #A5F247; border-color: #A5F247; }
-.grocery-text { flex: 1; border: none; background: transparent; outline: none; font-size: 14px; }
-.grocery-del { background: transparent; border: none; font-size: 18px; cursor: pointer; }
-body.dark-mode .grocery-item { background: #3a3a3a; border-color: #555; }
-body.dark-mode .grocery-text { color: #e0e0e0; }
-</style>
-
-<style>
-/* Persist highlight for selected timer preset */
-.timer-preset.active { 
-    outline: 2px solid #A5F247; 
-    box-shadow: 0 0 0 3px rgba(165,242,71,0.35); 
-}
-body.dark-mode .timer-preset.active {
-    outline-color: #A5F247;
-    box-shadow: 0 0 0 3px rgba(165,242,71,0.25);
-}
-</style>
-
-<style>
 .weekly-scroll { display: flex; gap: 24px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 8px 4px 12px; }
 .week-day-card { min-width: 360px; border: 1px solid #e9ecef; border-radius: 16px; padding: 16px; background: #fff; }
 .week-day-title { font-weight: 700; letter-spacing: 0.04em; color: #333; margin-bottom: 10px; }
@@ -3473,11 +3444,19 @@ body.dark-mode .timer-preset.active {
 body.dark-mode .week-day-card { background: #2d2d2d; border-color: #444; }
 body.dark-mode .week-task-item { background: #3a3a3a; border-color: #555; }
 body.dark-mode .week-day-title { color: #f1f1f1; }
-</style>
 
+.grocery-list { list-style: none; padding: 0; margin: 0; }
+.grocery-item { display: flex; align-items: center; gap: 8px; padding: 10px; border: 1px solid #e9ecef; border-radius: 8px; margin-bottom: 8px; background: #f8f9fa; }
+.grocery-check { width: 18px; height: 18px; border: 2px solid #dee2e6; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.grocery-check.checked { background: #A5F247; border-color: #A5F247; }
+.grocery-text { flex: 1; border: none; background: transparent; outline: none; font-size: 14px; }
+.grocery-del { background: transparent; border: none; font-size: 18px; cursor: pointer; }
+body.dark-mode .grocery-item { background: #3a3a3a; border-color: #555; }
+body.dark-mode .grocery-text { color: #e0e0e0; }
 
-<style>
-/* Mobile-first responsive tweaks - no visual redesign */
+.timer-preset.active { outline: 2px solid #A5F247; box-shadow: 0 0 0 3px rgba(165,242,71,0.35); }
+body.dark-mode .timer-preset.active { outline-color: #A5F247; box-shadow: 0 0 0 3px rgba(165,242,71,0.25); }
+
 @media (max-width: 900px){
   .planner-content{ grid-template-columns: 1fr !important; gap: 16px; }
   .section{ padding: 16px; }
@@ -3486,86 +3465,24 @@ body.dark-mode .week-day-title { color: #f1f1f1; }
   .weekly-scroll{ gap: 16px; padding-left: 0; padding-right: 8px; }
   .week-day-card{ min-width: 280px; }
   .page-navigation{ padding: 12px; gap: 8px; }
-}
-@media (min-width: 901px){
-  .planner-content{ grid-template-columns: 1fr 1fr; }
-}
-</style>
-
-
-<style>
-/* Prevent iOS zoom on focus and ensure fields fit on mobile */
-@media (max-width: 900px){
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  input[type="time"],
-  input[type="number"],
-  select, textarea {
-    font-size: 16px !important; /* avoid iOS auto-zoom */
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  /* Stack Daily Plan columns cleanly */
-  #daily-plan .planner-content {
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
-  }
-  #daily-plan .left-column,
-  #daily-plan .right-column {
-    grid-column: 1 / -1 !important;
-    width: 100% !important;
-  }
-
-  /* Make sections scroll-safe without breaking layout */
-  #daily-plan .section {
-    overflow: visible;
-  }
-
-  /* Ensure inner controls don’t overflow */
-  .priority-item,
-  .todo-item,
-  .time-schedule-item,
-  .notes-textarea,
-  .brain-dump-area {
-    max-width: 100%;
-  }
-
-  /* Buttons and pills wrap nicely on mobile */
-  .timer-presets,
-  .week-navigation {
-    flex-wrap: wrap;
-  }
-}
-/* Improve text auto-sizing behavior */
-html, body { -webkit-text-size-adjust: 100%; }
-</style>
-
-
-<style>
-/* Mobile fit: prevent inputs from overflowing their flex rows */
-@media (max-width: 900px){
+  #daily-plan .planner-content{ grid-template-columns: 1fr !important; gap: 16px !important; }
+  #daily-plan .left-column, #daily-plan .right-column{ grid-column: 1 / -1 !important; width: 100% !important; }
   .priority-item .priority-input,
   .todo-item .todo-input,
   .time-schedule-item .time-input,
   .capture-item .capture-input,
   .meal-item .meal-input-new,
-  .weekly-meal-day .weekly-meal-input {
-    flex: 1 1 auto !important;
-    width: auto !important;
-    min-width: 0 !important; /* let flex child shrink to container */
+  .weekly-meal-day .weekly-meal-input{
+    flex: 1 1 auto !important; width: auto !important; min-width: 0 !important;
   }
-  /* Make the checkbox/icon columns non-growing to preserve space */
-  .priority-item .priority-icon,
-  .todo-item .todo-checkbox {
-    flex: 0 0 auto;
-  }
-  /* Avoid horizontal scroll caused by inner elements */
-  #daily-plan .section, #daily-plan .planner-content, body {
-    overflow-x: hidden;
-  }
+  .priority-item .priority-icon, .todo-item .todo-checkbox{ flex: 0 0 auto; }
+  .hydration-tracker{ display:flex; justify-content:center; gap:8px; flex-wrap:wrap; }
+  .mood-options{ flex-wrap: wrap; }
 }
+@supports (-webkit-touch-callout: none){
+  input, select, textarea{ font-size: 16px !important; }
+}
+html, body{ -webkit-text-size-adjust: 100%; }
 </style>
 
 </head>
@@ -3981,7 +3898,8 @@ html, body { -webkit-text-size-adjust: 100%; }
         </div>
 
         <!-- Page 3: Weekly View -->
-        <div id="weekly-view" class="page">
+        
+<div id="weekly-view" class="page">
   <div class="planner-content">
     <div class="section full-width-section">
       <div class="section-header">
@@ -3989,6 +3907,7 @@ html, body { -webkit-text-size-adjust: 100%; }
       </div>
       <div class="section-content">
         <div class="weekly-scroll" id="weeklyScroll">
+          
           <div class="week-day-card" data-day="0">
             <div class="week-day-title">SUN</div>
             <div class="week-input-row">
@@ -3997,6 +3916,8 @@ html, body { -webkit-text-size-adjust: 100%; }
             </div>
             <ul class="week-task-list"></ul>
           </div>
+
+
           <div class="week-day-card" data-day="1">
             <div class="week-day-title">MON</div>
             <div class="week-input-row">
@@ -4005,6 +3926,8 @@ html, body { -webkit-text-size-adjust: 100%; }
             </div>
             <ul class="week-task-list"></ul>
           </div>
+
+
           <div class="week-day-card" data-day="2">
             <div class="week-day-title">TUE</div>
             <div class="week-input-row">
@@ -4013,6 +3936,8 @@ html, body { -webkit-text-size-adjust: 100%; }
             </div>
             <ul class="week-task-list"></ul>
           </div>
+
+
           <div class="week-day-card" data-day="3">
             <div class="week-day-title">WED</div>
             <div class="week-input-row">
@@ -4021,6 +3946,8 @@ html, body { -webkit-text-size-adjust: 100%; }
             </div>
             <ul class="week-task-list"></ul>
           </div>
+
+
           <div class="week-day-card" data-day="4">
             <div class="week-day-title">THU</div>
             <div class="week-input-row">
@@ -4029,6 +3956,8 @@ html, body { -webkit-text-size-adjust: 100%; }
             </div>
             <ul class="week-task-list"></ul>
           </div>
+
+
           <div class="week-day-card" data-day="5">
             <div class="week-day-title">FRI</div>
             <div class="week-input-row">
@@ -4037,6 +3966,8 @@ html, body { -webkit-text-size-adjust: 100%; }
             </div>
             <ul class="week-task-list"></ul>
           </div>
+
+
           <div class="week-day-card" data-day="6">
             <div class="week-day-title">SAT</div>
             <div class="week-input-row">
@@ -4045,11 +3976,13 @@ html, body { -webkit-text-size-adjust: 100%; }
             </div>
             <ul class="week-task-list"></ul>
           </div>
+
         </div>
       </div>
     </div>
   </div>
-</div><!-- Page 4: Monthly View -->
+</div>
+<!-- Page 4: Monthly View -->
         <div id="monthly-view" class="page">
             <div class="planner-content single-column">
                 <div class="section full-width-section">
@@ -5797,43 +5730,32 @@ html, body { -webkit-text-size-adjust: 100%; }
 
 <script>
 (function(){
-  // --- Fix: Reset button returns timer to its initial preset ---
   window.resetTimer = function(){
-    try {
+    try{
       timerRunning = false;
       clearInterval(timerInterval);
       var startBtn = document.getElementById('startBtn');
       var pauseBtn = document.getElementById('pauseBtn');
       if (startBtn) startBtn.style.display = 'inline-block';
       if (pauseBtn) pauseBtn.style.display = 'none';
-      // Reset to the last selected preset (fallback to 25)
       timerMinutes = (typeof originalTimerMinutes !== 'undefined' && originalTimerMinutes) ? originalTimerMinutes : 25;
       timerSeconds = 0;
       if (typeof updateTimerDisplay === 'function') updateTimerDisplay();
-    } catch (e) { console.warn('resetTimer override error', e); }
+    }catch(e){}
   };
 
-  // --- Quick Captures: allow deleting entries ---
   function attachDeleteButton(item){
     if (!item || item.querySelector('.capture-delete')) return;
     var btn = document.createElement('button');
-    btn.className = 'capture-delete';
-    btn.type = 'button';
-    btn.title = 'Delete';
-    btn.textContent = '×';
+    btn.className = 'capture-delete'; btn.type = 'button'; btn.title = 'Delete'; btn.textContent = '×';
     btn.addEventListener('click', function(){ item.remove(); });
     item.appendChild(btn);
   }
-  function enhanceQuickCaptures(){
-    var items = document.querySelectorAll('#captures-container .capture-item');
-    items.forEach(attachDeleteButton);
-  }
-  // Override addQuickCapture to include delete button while preserving existing behavior
-  var _originalAddQuickCapture = window.addQuickCapture;
+  var _origAddQuickCapture = window.addQuickCapture;
   window.addQuickCapture = function(){
-    try {
+    try{
       var container = document.getElementById('captures-container');
-      if (!container) { if (_originalAddQuickCapture) return _originalAddQuickCapture(); else return; }
+      if (!container) { if (_origAddQuickCapture) return _origAddQuickCapture(); else return; }
       var icons = ['💭','🎯','📝','⚡','🌟','🔥','💡','🚀','✨','📌','🎨','🔮'];
       var placeholders = [
         'Quick thought or idea...','Something to remember...','Task or action item...','Goal or aspiration...',
@@ -5846,14 +5768,13 @@ html, body { -webkit-text-size-adjust: 100%; }
       var input = document.createElement('input'); input.type = 'text'; input.className = 'capture-input'; input.placeholder = placeholders[idx];
       wrap.appendChild(ic); wrap.appendChild(input); attachDeleteButton(wrap);
       container.appendChild(wrap);
-    } catch (e) {
-      // Fallback to original if something goes wrong
-      if (_originalAddQuickCapture) _originalAddQuickCapture();
-    }
+    }catch(e){ if (_origAddQuickCapture) _origAddQuickCapture(); }
   };
-  document.addEventListener('DOMContentLoaded', enhanceQuickCaptures);
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('#captures-container .capture-item').forEach(attachDeleteButton);
+  });
 
-  // --- Grocery list: action list with emoji support ---
+  // Grocery list
   function renderGrocery(){
     var ul = document.getElementById('groceryList');
     if (!ul) return;
@@ -5881,7 +5802,6 @@ html, body { -webkit-text-size-adjust: 100%; }
     renderGrocery();
   });
 
-  // --- Persist new Meal Planner sections alongside existing save/load ---
   var _origSave = window.saveDataForDate;
   var _origLoad = window.loadDataForDate;
   window.saveDataForDate = function(dateString){
@@ -5890,36 +5810,32 @@ html, body { -webkit-text-size-adjust: 100%; }
       localStorage.setItem('taskRock_grocery_' + dateString, JSON.stringify(window._groceryItems || []));
       var mpi = document.getElementById('mealPrepIdeas'); if (mpi) localStorage.setItem('taskRock_mealPrep_' + dateString, mpi.value || '');
       var cn = document.getElementById('cookingNotes'); if (cn) localStorage.setItem('taskRock_cookingNotes_' + dateString, cn.value || '');
-    } catch(e){ console.warn('Save extras failed', e); }
+    } catch(e){}
   };
   window.loadDataForDate = function(dateString){
     try { if (_origLoad) _origLoad(dateString); } catch(e){}
-    try {
-      window._groceryItems = JSON.parse(localStorage.getItem('taskRock_grocery_' + dateString) || '[]');
-    } catch(e){ window._groceryItems = []; }
+    try { window._groceryItems = JSON.parse(localStorage.getItem('taskRock_grocery_' + dateString) || '[]'); } catch(e){ window._groceryItems = []; }
     renderGrocery();
     var mpi = document.getElementById('mealPrepIdeas'); if (mpi) mpi.value = localStorage.getItem('taskRock_mealPrep_' + dateString) || '';
     var cn = document.getElementById('cookingNotes'); if (cn) cn.value = localStorage.getItem('taskRock_cookingNotes_' + dateString) || '';
   };
-})();
-</script>
 
-
-<script>
-(function(){
+  // Timer preset highlight
   function markActivePreset(minutes){
     try{
       var btns = document.querySelectorAll('.timer-preset');
       btns.forEach(function(b){
-        // Try to derive minutes from button text like '25 min'
         var m = parseInt((b.textContent||'').replace(/\D+/g,''), 10);
         if (!isNaN(m) && m === minutes) b.classList.add('active');
         else b.classList.remove('active');
       });
     } catch(e){}
   }
-
-  // Attach click listeners to also mark active immediately
+  var _origSetTimer = window.setTimer;
+  window.setTimer = function(minutes){
+    if (typeof _origSetTimer === 'function') _origSetTimer(minutes);
+    markActivePreset(minutes);
+  };
   document.addEventListener('DOMContentLoaded', function(){
     document.querySelectorAll('.timer-preset').forEach(function(b){
       b.addEventListener('click', function(){
@@ -5927,48 +5843,16 @@ html, body { -webkit-text-size-adjust: 100%; }
         if (!isNaN(m)) markActivePreset(m);
       });
     });
-    // Initial highlight using default or previously chosen preset
     if (typeof originalTimerMinutes !== 'undefined') markActivePreset(originalTimerMinutes);
   });
 
-  // Wrap/override setTimer to keep behavior + add highlighting
-  var _origSetTimer = window.setTimer;
-  window.setTimer = function(minutes){
-    if (typeof _origSetTimer === 'function') _origSetTimer(minutes);
-    markActivePreset(minutes);
-  };
-})();
-</script>
-
-
-<script>
-(function(){
+  // Weekly planner
   function getWeekKey(dateString){
-    try{
-      var d = new Date(dateString + "T00:00:00");
-      var day = d.getDay(); // 0=Sun
-      var sun = new Date(d); sun.setDate(d.getDate()-day);
-      var iso = sun.toISOString().slice(0,10);
-      return iso;
-    }catch(e){ return dateString; }
+    try{ var d = new Date(dateString + "T00:00:00"); var day = d.getDay(); var sun = new Date(d); sun.setDate(d.getDate()-day); return sun.toISOString().slice(0,10);}catch(e){ return dateString; }
   }
-  function ensureStore(){
-    if (!window._weeklyTasksNew) window._weeklyTasksNew = {0:[],1:[],2:[],3:[],4:[],5:[],6:[]};
-  }
-  function weekStorageKey(dateString){
-    return 'taskRock_weeklyNew_' + getWeekKey(dateString || (window.currentDate || new Date().toISOString().slice(0,10)));
-  }
-  function saveWeekly(){
-    try { localStorage.setItem(weekStorageKey(window.currentDate), JSON.stringify(window._weeklyTasksNew||{})); } catch(e){}
-  }
-  function loadWeekly(dateString){
-    ensureStore();
-    try {
-      var data = JSON.parse(localStorage.getItem(weekStorageKey(dateString)) || '{}');
-      if (data && typeof data === 'object') window._weeklyTasksNew = Object.assign({0:[],1:[],2:[],3:[],4:[],5:[],6:[]}, data);
-    } catch(e){ ensureStore(); }
-    renderWeekly();
-  }
+  function ensureStore(){ if (!window._weeklyTasksNew) window._weeklyTasksNew = {0:[],1:[],2:[],3:[],4:[],5:[],6:[]}; }
+  function weekStorageKey(dateString){ return 'taskRock_weeklyNew_' + getWeekKey(dateString || (window.currentDate || new Date().toISOString().slice(0,10))); }
+  function saveWeekly(){ try { localStorage.setItem(weekStorageKey(window.currentDate), JSON.stringify(window._weeklyTasksNew||{})); } catch(e){} }
   function renderWeekly(){
     ensureStore();
     document.querySelectorAll('.week-day-card').forEach(function(card){
@@ -5985,7 +5869,13 @@ html, body { -webkit-text-size-adjust: 100%; }
       });
     });
   }
-  function wireAddButtons(){
+  function loadWeekly(dateString){
+    ensureStore();
+    try { var data = JSON.parse(localStorage.getItem(weekStorageKey(dateString)) || '{}'); if (data && typeof data === 'object') window._weeklyTasksNew = Object.assign({0:[],1:[],2:[],3:[],4:[],5:[],6:[]}, data);} catch(e){ ensureStore(); }
+    renderWeekly();
+  }
+  window.renderWeekly = renderWeekly;
+  document.addEventListener('DOMContentLoaded', function(){
     document.querySelectorAll('.week-day-card').forEach(function(card){
       var day = parseInt(card.getAttribute('data-day'),10);
       var add = card.querySelector('.week-add-btn');
@@ -5994,110 +5884,23 @@ html, body { -webkit-text-size-adjust: 100%; }
         var val = (input.value||'').trim();
         if(!val) return;
         ensureStore();
-        window._weeklyTasksNew[day].push({text:val, done:false});
-        input.value = '';
-        saveWeekly();
-        renderWeekly();
+        (window._weeklyTasksNew[day] = window._weeklyTasksNew[day] || []).push({text:val, done:false});
+        input.value='';
+        saveWeekly(); renderWeekly();
       }
-      add.addEventListener('click', addTask);
-      input.addEventListener('keypress', function(e){ if(e.key==='Enter'){ e.preventDefault(); addTask(); } });
+      if (add) add.addEventListener('click', addTask);
+      if (input) input.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); addTask(); } });
     });
-  }
-  document.addEventListener('DOMContentLoaded', function(){
-    wireAddButtons();
     loadWeekly(window.currentDate || new Date().toISOString().slice(0,10));
   });
+  var _oldLoad = window.loadDataForDate;
+  window.loadDataForDate = function(dateString){ try { if (_oldLoad) _oldLoad(dateString); } catch(e){} loadWeekly(dateString); };
+  var _oldSave = window.saveDataForDate;
+  window.saveDataForDate = function(dateString){ try { if (_oldSave) _oldSave(dateString); } catch(e){} saveWeekly(); };
 
-  // Integrate with existing save/load so week data follows date changes
-  var _origLoad = window.loadDataForDate;
-  window.loadDataForDate = function(dateString){
-    try { if (_origLoad) _origLoad(dateString); } catch(e){}
-    loadWeekly(dateString);
-  };
-  var _origSave = window.saveDataForDate;
-  window.saveDataForDate = function(dateString){
-    try { if (_origSave) _origSave(dateString); } catch(e){}
-    saveWeekly();
-  };
-  window.renderWeekly = renderWeekly;
-})();
-</script>
-
-
-<script>
-// Robust delegation for Weekly Planner add/remove/toggle/edit
-(function(){
-  function ensureStore(){ if(!window._weeklyTasksNew) window._weeklyTasksNew={0:[],1:[],2:[],3:[],4:[],5:[],6:[]}; }
-  function weekStorageKey(){
-    var d = (window.currentDate || new Date().toISOString().slice(0,10));
-    try{ var dt = new Date(d + "T00:00:00"); var sun = new Date(dt); sun.setDate(dt.getDate()-dt.getDay()); d = sun.toISOString().slice(0,10);}catch(e){}
-    return 'taskRock_weeklyNew_' + d;
-  }
-  function saveWeekly(){ try{ localStorage.setItem(weekStorageKey(), JSON.stringify(window._weeklyTasksNew||{})); }catch(e){} }
-  function refresh(){ if(typeof renderWeekly === 'function'){ renderWeekly(); } }
-  document.addEventListener('click', function(e){
-    // Add
-    var addBtn = e.target.closest('.week-add-btn');
-    if(addBtn){
-      var card = addBtn.closest('.week-day-card'); if(!card) return;
-      var day = parseInt(card.getAttribute('data-day'),10);
-      var input = card.querySelector('.weekly-task-input');
-      var val = (input && input.value || '').trim();
-      if(!val){ return; }
-      ensureStore();
-      (window._weeklyTasksNew[day] = window._weeklyTasksNew[day] || []).push({text:val, done:false});
-      if(input) input.value='';
-      saveWeekly(); refresh();
-      return;
-    }
-    // Delete
-    var delBtn = e.target.closest('.week-task-del');
-    if(delBtn){
-      var li = delBtn.closest('li.week-task-item'); if(!li) return;
-      var card = delBtn.closest('.week-day-card'); if(!card) return;
-      var day = parseInt(card.getAttribute('data-day'),10);
-      var list = Array.from(card.querySelectorAll('li.week-task-item'));
-      var idx = list.indexOf(li);
-      if(idx > -1){
-        ensureStore(); (window._weeklyTasksNew[day]||[]).splice(idx,1);
-        saveWeekly(); refresh();
-      }
-      return;
-    }
-    // Toggle check
-    var chk = e.target.closest('.week-task-check');
-    if(chk){
-      var li = chk.closest('li.week-task-item'); if(!li) return;
-      var card = chk.closest('.week-day-card'); if(!card) return;
-      var day = parseInt(card.getAttribute('data-day'),10);
-      var list = Array.from(card.querySelectorAll('li.week-task-item'));
-      var idx = list.indexOf(li);
-      ensureStore();
-      var arr = window._weeklyTasksNew[day]||[];
-      if(arr[idx]){ arr[idx].done = !arr[idx].done; }
-      saveWeekly(); refresh();
-      return;
-    }
-  }, true);
-  // Inline edit updates
-  document.addEventListener('input', function(e){
-    var inp = e.target.closest('.week-task-text');
-    if(!inp) return;
-    var li = inp.closest('li.week-task-item'); if(!li) return;
-    var card = inp.closest('.week-day-card'); if(!card) return;
-    var day = parseInt(card.getAttribute('data-day'),10);
-    var list = Array.from(card.querySelectorAll('li.week-task-item'));
-    var idx = list.indexOf(li);
-    ensureStore();
-    var arr = window._weeklyTasksNew[day]||[];
-    if(arr[idx]){ arr[idx].text = inp.value; }
-    saveWeekly();
-  }, true);
-
-  // Make all scroll containers scrollable on small screens
   document.addEventListener('DOMContentLoaded', function(){
     document.querySelectorAll('.page, .section, .weekly-scroll').forEach(function(el){
-      el.style.overflow = el.style.overflow || 'auto';
+      if(!el.style.overflow) el.style.overflow = 'auto';
       el.style.webkitOverflowScrolling = 'touch';
     });
   });

@@ -5935,3 +5935,32 @@ html { box-sizing: border-box; }
 </body>
 </html>
 
+
+
+<style>
+html { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+
+@media (max-width: 900px) {
+    #daily-plan .planner-content { grid-template-columns: 1fr !important; gap: 16px !important; }
+    #daily-plan .left-column, #daily-plan .right-column { grid-column: 1 / -1 !important; width: 100% !important; }
+
+    .priority-item, .todo-item, .time-schedule-item { min-width: 0 !important; }
+    .priority-item .priority-input, .todo-item .todo-input, .time-schedule-item .time-input { flex: 1 1 0 !important; min-width: 0 !important; width: auto !important; }
+    .priority-item .priority-icon, .todo-item .todo-checkbox, .time-schedule-item .time-slot { flex: 0 0 auto !important; }
+
+    .mood-options, .hydration-tracker { flex-wrap: wrap !important; }
+
+    html, body, .page#daily-plan, #daily-plan .planner-content, #daily-plan .section { max-width: 100vw; overflow-x: hidden !important; }
+
+    @supports (-webkit-touch-callout: none) {
+        input, select, textarea { font-size: 16px !important; }
+    }
+    html, body { -webkit-text-size-adjust: 100%; }
+
+    #daily-plan.page { padding-left: 12px; padding-right: 12px; }
+    #daily-plan .section { padding-left: 16px; padding-right: 16px; }
+}
+</style>
+
+

@@ -3542,6 +3542,32 @@ body.dark-mode .week-day-title { color: #f1f1f1; }
 html, body { -webkit-text-size-adjust: 100%; }
 </style>
 
+
+<style>
+/* Mobile fit: prevent inputs from overflowing their flex rows */
+@media (max-width: 900px){
+  .priority-item .priority-input,
+  .todo-item .todo-input,
+  .time-schedule-item .time-input,
+  .capture-item .capture-input,
+  .meal-item .meal-input-new,
+  .weekly-meal-day .weekly-meal-input {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    min-width: 0 !important; /* let flex child shrink to container */
+  }
+  /* Make the checkbox/icon columns non-growing to preserve space */
+  .priority-item .priority-icon,
+  .todo-item .todo-checkbox {
+    flex: 0 0 auto;
+  }
+  /* Avoid horizontal scroll caused by inner elements */
+  #daily-plan .section, #daily-plan .planner-content, body {
+    overflow-x: hidden;
+  }
+}
+</style>
+
 </head>
 <body>
     <div class="planner-container">

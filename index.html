@@ -109,6 +109,11 @@
             display: inline-block !important;
         }
 
+        .logo-light, .logo-dark {
+            max-height: 40px;
+            width: auto;
+        }
+
         body.dark-mode .dark-mode-toggle {
             background: #404040;
             border-color: #555;
@@ -678,7 +683,7 @@
         .planner-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 24px;
+            gap: 8px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -690,7 +695,7 @@
         .left-column, .right-column {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 8px;
         }
 
         /* Section Styles */
@@ -879,7 +884,7 @@
         .tracker-section {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 8px;
         }
 
         .mood-tracker, .hydration-tracker {
@@ -1004,6 +1009,30 @@
             justify-content: center;
             font-size: 16px;
             flex-shrink: 0;
+        }
+
+        .delete-capture-btn {
+            background: #ff4757;
+            color: white;
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            opacity: 0.7;
+        }
+
+        .delete-capture-btn:hover {
+            background: #ff3742;
+            opacity: 1;
+            transform: scale(1.1);
         }
 
         .add-capture-section {
@@ -1196,7 +1225,7 @@
         .weekly-container {
             display: flex;
             height: calc(100vh - 200px);
-            gap: 24px;
+            gap: 8px;
             padding: 0;
             max-width: none;
         }
@@ -1210,7 +1239,7 @@
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 8px;
         }
 
         .sidebar-title {
@@ -1863,9 +1892,8 @@
         <div class="planner-header">
             <div class="header-top">
                 <div class="planner-title">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiByeD0iOCIgZmlsbD0iIzhGRUI2MCIvPgo8cGF0aCBkPSJNMTIgMjBMMTggMjZMMjggMTQiIHN0cm9rZT0iIzMzMzMzMyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==" alt="Task Rock" class="logo-light">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiByeD0iOCIgZmlsbD0iIzhGRUI2MCIvPgo8cGF0aCBkPSJNMTIgMjBMMTggMjZMMjggMTQiIHN0cm9rZT0iIzAwMDAwMCIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==" alt="Task Rock" class="logo-dark" style="display: none;">
-                    Task Rock
+                    <img src="logo.png" alt="Task Rock" class="logo-light">
+                    <img src="dark-logo.png" alt="Task Rock" class="logo-dark" style="display: none;">
                 </div>
                 <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
             </div>
@@ -1905,6 +1933,41 @@
         <div id="daily-plan" class="page active">
             <div class="planner-content">
                 <div class="left-column">
+                    <!-- Daily Trackers -->
+                    <div class="section">
+                        <div class="section-header">
+                            <h3 class="section-title">📊 Daily Trackers</h3>
+                        </div>
+                        <div class="section-content">
+                            <div class="tracker-section">
+                                <div class="mood-tracker">
+                                    <div class="tracker-title">How are you feeling?</div>
+                                    <div class="mood-options">
+                                        <div class="mood-option">😢</div>
+                                        <div class="mood-option">😕</div>
+                                        <div class="mood-option">😐</div>
+                                        <div class="mood-option">😊</div>
+                                        <div class="mood-option">😄</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="hydration-tracker">
+                                    <div class="tracker-title">Water intake (8 glasses)</div>
+                                    <div class="hydration-tracker">
+                                        <div class="water-glass">💧</div>
+                                        <div class="water-glass">💧</div>
+                                        <div class="water-glass">💧</div>
+                                        <div class="water-glass">💧</div>
+                                        <div class="water-glass">💧</div>
+                                        <div class="water-glass">💧</div>
+                                        <div class="water-glass">💧</div>
+                                        <div class="water-glass">💧</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Top 3 Priorities -->
                     <div class="section">
                         <div class="section-header">
@@ -2158,45 +2221,12 @@
                         </div>
                     </div>
 
-                    <!-- Daily Trackers -->
-                    <div class="section">
-                        <div class="section-header">
-                            <h3 class="section-title">📊 Daily Trackers</h3>
-                        </div>
-                        <div class="section-content">
-                            <div class="tracker-section">
-                                <div class="mood-tracker">
-                                    <div class="tracker-title">How are you feeling?</div>
-                                    <div class="mood-options">
-                                        <div class="mood-option">😢</div>
-                                        <div class="mood-option">😕</div>
-                                        <div class="mood-option">😐</div>
-                                        <div class="mood-option">😊</div>
-                                        <div class="mood-option">😄</div>
-                                    </div>
-                                </div>
-                                
-                                <div class="hydration-tracker">
-                                    <div class="tracker-title">Water intake (8 glasses)</div>
-                                    <div class="hydration-tracker">
-                                        <div class="water-glass">💧</div>
-                                        <div class="water-glass">💧</div>
-                                        <div class="water-glass">💧</div>
-                                        <div class="water-glass">💧</div>
-                                        <div class="water-glass">💧</div>
-                                        <div class="water-glass">💧</div>
-                                        <div class="water-glass">💧</div>
-                                        <div class="water-glass">💧</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 
             <!-- Notes Section -->
-            <div class="planner-content single-column">
+            <div class="planner-content single-column" style="margin-top: 8px;">
                 <div class="section full-width-section">
                     <div class="section-header">
                         <h3 class="section-title">📝 Notes & Reflections</h3>
@@ -2304,7 +2334,7 @@
             </div>
 
             <!-- Cooking Notes -->
-            <div class="planner-content single-column">
+            <div class="planner-content single-column" style="margin-top: 8px;">
                 <div class="section full-width-section">
                     <div class="section-header">
                         <h3 class="section-title">👨‍🍳 Cooking Notes & Tips</h3>
@@ -2911,13 +2941,9 @@
                 
                 // Add click handler for date selection and event creation
                 dayElement.addEventListener('click', function(e) {
-                    // If double-click, open event modal
-                    if (e.detail === 2) {
-                        openEventModal(year, month, day);
-                        return;
-                    }
+                    // Single click - open event modal and select date
+                    openEventModal(year, month, day);
                     
-                    // Single click - select date
                     const newDate = new Date(year, month, day);
                     currentDate = newDate.toISOString().slice(0, 10);
                     document.getElementById('plannerDate').value = currentDate;
@@ -3136,6 +3162,7 @@
             newCaptureItem.innerHTML = `
                 <div class="capture-icon">${icon}</div>
                 <input type="text" class="capture-input" placeholder="${placeholder}">
+                <button class="delete-capture-btn" onclick="deleteQuickCapture(this)" title="Delete this capture">×</button>
             `;
             
             // Add to container
@@ -3144,6 +3171,12 @@
             // Focus on the new input
             const newInput = newCaptureItem.querySelector('.capture-input');
             newInput.focus();
+        }
+
+        // Delete quick capture functionality
+        function deleteQuickCapture(button) {
+            const captureItem = button.parentElement;
+            captureItem.remove();
         }
 
         // Grocery list functionality
@@ -3542,7 +3575,7 @@
         /* Weekly planner styles */
         .weekly-scroll { 
             display: flex; 
-            gap: 24px; 
+            gap: 8px; 
             overflow-x: auto; 
             -webkit-overflow-scrolling: touch; 
             padding: 8px 4px 12px; 

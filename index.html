@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-    <title>Task Rock</title>
+    <title>Task Rock Daily Planner</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="manifest" href="manifest.json">
@@ -60,6 +60,8 @@
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         /* Header Styles - Updated to white/light background */
@@ -700,6 +702,9 @@
             padding: 24px;
             background: #f5f5f5;
             min-height: calc(100vh - 300px);
+            max-width: 100%;
+            box-sizing: border-box;
+            overflow-x: hidden;
         }
 
         .page.active {
@@ -712,6 +717,8 @@
             gap: 8px;
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .single-column {
@@ -731,6 +738,8 @@
             border: 1px solid #e9ecef;
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            max-width: 100%;
+            box-sizing: border-box;
         }
 
         .section-header {
@@ -748,6 +757,9 @@
 
         .section-content {
             padding: 20px;
+            max-width: 100%;
+            box-sizing: border-box;
+            overflow-x: hidden;
         }
 
         .full-width-section {
@@ -1221,6 +1233,8 @@
             background: #f8f9fa;
             border-radius: 8px;
             border: 1px solid #e9ecef;
+            max-width: 100%;
+            box-sizing: border-box;
         }
 
         .day-label {
@@ -1228,6 +1242,7 @@
             color: #333;
             min-width: 80px;
             font-size: 14px;
+            flex-shrink: 0;
         }
 
         .weekly-meal-input {
@@ -1239,6 +1254,8 @@
             transition: all 0.2s ease;
             min-height: 44px;
             background: white;
+            min-width: 0;
+            max-width: 100%;
         }
 
         .weekly-meal-input:focus {
@@ -1867,7 +1884,7 @@
 
         @media (max-width: 480px) {
             body {
-                padding: 5px;
+                padding: 2px;
                 font-size: 13px;
             }
             
@@ -1888,7 +1905,7 @@
             }
             
             .section-content {
-                padding: 16px;
+                padding: 12px;
             }
             
             .priority-input,
@@ -1900,6 +1917,16 @@
                 min-height: 40px;
                 padding: 8px 12px;
                 font-size: 16px;
+            }
+            
+            .weekly-meal-day {
+                gap: 8px;
+                padding: 8px;
+            }
+            
+            .day-label {
+                min-width: 70px;
+                font-size: 13px;
             }
             
             .notes-textarea,
@@ -1923,8 +1950,8 @@
                 </div>
                 <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
             </div>
+            <div class="planner-subtitle">Daily Planner</div>
             
-        
             <!-- Week Navigation -->
             <div class="week-navigation">
                 <button class="week-nav-btn nav-arrow" onclick="changeWeek(-1)">‹</button>
@@ -2348,17 +2375,20 @@
                         </div>
                     </div>
 
-                    <!-- Grocery List -->
-                    <div class="section">
-                        <div class="section-header">
-                            <h3 class="section-title">🛒 Grocery List</h3>
-                        </div>
-                        <div class="section-content">
-                            <ul id="groceryList" class="grocery-list">
-                                <!-- Grocery items will be added dynamically -->
-                            </ul>
-                            <button onclick="addGroceryItem()" style="background: #A5F247; color: #333; border: none; padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 12px;">+ Add Item</button>
-                        </div>
+                </div>
+            </div>
+
+            <!-- Grocery List -->
+            <div class="planner-content single-column" style="margin-top: 8px;">
+                <div class="section full-width-section">
+                    <div class="section-header">
+                        <h3 class="section-title">🛒 Grocery List</h3>
+                    </div>
+                    <div class="section-content">
+                        <ul id="groceryList" class="grocery-list">
+                            <!-- Grocery items will be added dynamically -->
+                        </ul>
+                        <button onclick="addGroceryItem()" style="background: #A5F247; color: #333; border: none; padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 12px;">+ Add Item</button>
                     </div>
                 </div>
             </div>

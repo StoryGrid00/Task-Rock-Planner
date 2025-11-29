@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#A5F247">
+    <meta name="theme-color" content="#000000">
     
     <style>
         * {
@@ -19,7 +19,7 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: #f5f5f5;
-            color: #333;
+            color: #000000;
             line-height: 1.6;
             padding: 10px;
             font-size: 14px;
@@ -66,10 +66,10 @@
 
         /* Header Styles - Updated to white/light background */
         .planner-header {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            background: #f8f9fa;
             padding: 24px;
             text-align: center;
-            border-bottom: 1px solid #e9ecef;
+            border-bottom: 1px solid #e0e0e0;
         }
 
         .header-top {
@@ -82,7 +82,7 @@
 
         .dark-mode-toggle {
             background: #f8f9fa;
-            border: 1px solid #dee2e6;
+            border: 1px solid #d0d0d0;
             border-radius: 50%;
             width: 44px;
             height: 44px;
@@ -99,7 +99,7 @@
         }
 
         .dark-mode-toggle:hover {
-            background: #e9ecef;
+            background: #e0e0e0;
             transform: scale(1.05);
         }
 
@@ -115,13 +115,13 @@
         }
 
         body.dark-mode .planner-header {
-            background: linear-gradient(135deg, #2d2d2d 0%, #3a3a3a 100%);
+            background: #2d2d2d;
             border-bottom: 1px solid #404040;
         }
 
         body.dark-mode .header {
             background: #2d2d2d;
-            border-bottom-color: #555;
+            border-bottom-color: #555555;
         }
 
         body.dark-mode .planner-title,
@@ -144,12 +144,12 @@
 
         body.dark-mode .dark-mode-toggle {
             background: #404040;
-            border-color: #555;
+            border-color: #555555;
             color: #e0e0e0;
         }
 
         body.dark-mode .dark-mode-toggle:hover {
-            background: #555;
+            background: #555555;
         }
 
         /* Fix main navigation background in dark mode */
@@ -168,59 +168,59 @@
 
         body.dark-mode .nav-btn {
             background: #404040;
-            border-color: #555;
+            border-color: #555555;
             color: #e0e0e0;
         }
 
         body.dark-mode .nav-btn:hover {
-            background: #555;
+            background: #555555;
         }
 
         body.dark-mode .nav-btn.active {
-            background: #8FEB60;
-            color: #000;
+            background: #000000;
+            color: #ffffff;
         }
 
         /* Week navigation date picker buttons dark mode */
         body.dark-mode .week-nav-btn {
             background: #404040 !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
             color: #e0e0e0 !important;
         }
 
         body.dark-mode .week-nav-btn:hover {
-            background: #555 !important;
-            border-color: #8FEB60 !important;
+            background: #555555 !important;
+            border-color: #000000 !important;
         }
 
         body.dark-mode .week-nav-btn.active {
-            background: #8FEB60 !important;
-            color: #000 !important;
-            border-color: #8FEB60 !important;
+            background: #000000 !important;
+            color: #ffffff !important;
+            border-color: #000000 !important;
         }
 
         /* Date Input Dark Mode */
         body.dark-mode .date-input {
             background: #404040 !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
             color: #e0e0e0 !important;
         }
 
         body.dark-mode .date-input:focus {
-            border-color: #8FEB60 !important;
-            box-shadow: 0 0 0 2px rgba(143, 235, 96, 0.2) !important;
+            border-color: #000000 !important;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1) !important;
         }
 
         /* Quote Input Dark Mode */
         body.dark-mode .quote-input {
             background: #404040 !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
             color: #e0e0e0 !important;
         }
 
         body.dark-mode .quote-input:focus {
-            border-color: #8FEB60 !important;
-            box-shadow: 0 0 0 2px rgba(143, 235, 96, 0.2) !important;
+            border-color: #000000 !important;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1) !important;
             color: #e0e0e0 !important;
         }
 
@@ -228,20 +228,20 @@
         body.dark-mode input,
         body.dark-mode textarea {
             background: #404040 !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
             color: #e0e0e0 !important;
         }
 
         body.dark-mode input:focus,
         body.dark-mode textarea:focus {
-            border-color: #8FEB60 !important;
-            box-shadow: 0 0 0 2px rgba(143, 235, 96, 0.2) !important;
+            border-color: #000000 !important;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1) !important;
         }
 
         /* Placeholder text in dark mode */
         body.dark-mode input::placeholder,
         body.dark-mode textarea::placeholder {
-            color: #999 !important;
+            color: #666666 !important;
             opacity: 1;
         }
 
@@ -254,12 +254,12 @@
         /* Section Styles */
         body.dark-mode .section {
             background: #2d2d2d !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
         }
 
         body.dark-mode .section-header {
             background: #3a3a3a !important;
-            border-bottom-color: #555 !important;
+            border-bottom-color: #555555 !important;
         }
 
         body.dark-mode .section-title {
@@ -269,7 +269,7 @@
         /* Meal Planning Dark Mode */
         body.dark-mode .meal-section {
             background: #3a3a3a !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
         }
 
         body.dark-mode .meal-title {
@@ -278,12 +278,12 @@
 
         body.dark-mode .meal-item {
             background: #3a3a3a !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
         }
 
         body.dark-mode .weekly-meal-day {
             background: #3a3a3a !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
         }
 
         body.dark-mode .day-label {
@@ -292,8 +292,8 @@
 
         /* Time Slot Dark Mode */
         body.dark-mode .time-slot {
-            background: #8FEB60 !important;
-            color: #000 !important;
+            background: #000000 !important;
+            color: #ffffff !important;
         }
 
         /* Tracker Styles Dark Mode */
@@ -303,54 +303,54 @@
 
         body.dark-mode .mood-option {
             background: #404040 !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
         }
 
         body.dark-mode .mood-option:hover {
-            border-color: #8FEB60 !important;
+            border-color: #000000 !important;
         }
 
         body.dark-mode .mood-option.selected {
-            background: #8FEB60 !important;
-            border-color: #8FEB60 !important;
+            background: #000000 !important;
+            border-color: #000000 !important;
         }
 
         body.dark-mode .water-glass {
             background: #404040 !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
             color: #e0e0e0 !important;
         }
 
         body.dark-mode .water-glass:hover {
-            border-color: #8FEB60 !important;
+            border-color: #000000 !important;
         }
 
         body.dark-mode .water-glass.filled {
-            background: #8FEB60 !important;
-            border-color: #8FEB60 !important;
+            background: #000000 !important;
+            border-color: #000000 !important;
             color: #000 !important;
         }
 
         /* Todo Checkbox Dark Mode */
         body.dark-mode .todo-checkbox {
             background: #404040 !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
         }
 
         body.dark-mode .todo-checkbox:hover {
-            border-color: #8FEB60 !important;
+            border-color: #000000 !important;
         }
 
         body.dark-mode .todo-checkbox.filled {
-            background: #8FEB60 !important;
-            border-color: #8FEB60 !important;
+            background: #000000 !important;
+            border-color: #000000 !important;
             color: #000 !important;
         }
 
         /* Weekly Sidebar Dark Mode */
         body.dark-mode .weekly-sidebar {
             background: #2d2d2d !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
         }
 
         body.dark-mode .sidebar-title {
@@ -360,13 +360,13 @@
         /* Monthly Calendar Dark Mode */
         body.dark-mode .monthly-calendar {
             background: #2d2d2d !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
             color: #e0e0e0;
         }
 
         body.dark-mode .calendar-header {
             background: #3a3a3a !important;
-            border-bottom-color: #555 !important;
+            border-bottom-color: #555555 !important;
             color: #e0e0e0;
         }
 
@@ -376,13 +376,13 @@
 
         body.dark-mode .calendar-nav {
             background: #404040 !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
             color: #e0e0e0 !important;
         }
 
         body.dark-mode .calendar-nav:hover {
-            background: #555 !important;
-            border-color: #8FEB60 !important;
+            background: #555555 !important;
+            border-color: #000000 !important;
         }
 
         body.dark-mode .calendar-grid {
@@ -392,31 +392,31 @@
         body.dark-mode .calendar-day-header {
             background: #3a3a3a !important;
             color: #e0e0e0 !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
         }
 
         body.dark-mode .calendar-day {
             background: #404040 !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
             color: #e0e0e0 !important;
         }
 
         body.dark-mode .calendar-day:hover {
-            background: #555 !important;
+            background: #555555 !important;
         }
 
         body.dark-mode .calendar-day.today {
-            background: #8FEB60 !important;
+            background: #000000 !important;
             color: #000 !important;
         }
 
         body.dark-mode .calendar-day.selected-date {
-            background: #8FEB60 !important;
+            background: #000000 !important;
             color: #000 !important;
         }
 
         body.dark-mode .calendar-day.other-month {
-            color: #666 !important;
+            color: #666666 !important;
         }
 
         /* Focus & Energy Dark Mode */
@@ -428,31 +428,31 @@
         body.dark-mode .focus-timer,
         body.dark-mode .distraction-blockers {
             background: #2d2d2d !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
         }
 
         body.dark-mode .energy-level,
         body.dark-mode .focus-level {
             background: #404040 !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
             color: #e0e0e0 !important;
         }
 
         body.dark-mode .energy-level.selected,
         body.dark-mode .focus-level.selected {
-            background: #8FEB60 !important;
+            background: #000000 !important;
             color: #000 !important;
         }
 
         body.dark-mode .timer-preset {
             background: #404040 !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
             color: #e0e0e0 !important;
         }
 
         body.dark-mode .timer-preset:hover,
         body.dark-mode .timer-preset.selected {
-            background: #8FEB60 !important;
+            background: #000000 !important;
             color: #000 !important;
         }
 
@@ -462,16 +462,16 @@
 
         body.dark-mode .distraction-item {
             background: #3a3a3a !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
         }
 
         body.dark-mode .distraction-checkbox {
             background: #404040 !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
         }
 
         body.dark-mode .distraction-checkbox.checked {
-            background: #8FEB60 !important;
+            background: #000000 !important;
             color: #000 !important;
         }
 
@@ -486,12 +486,12 @@
 
         body.dark-mode .brain-dump-section {
             background: #2d2d2d !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
         }
 
         /* Button Dark Mode */
         body.dark-mode .add-capture-btn {
-            background: #8FEB60 !important;
+            background: #000000 !important;
             color: #000 !important;
         }
 
@@ -502,16 +502,16 @@
         /* Timer Button Dark Mode */
         body.dark-mode .timer-btn {
             background: #404040 !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
             color: #e0e0e0 !important;
         }
 
         body.dark-mode .timer-btn:hover {
-            background: #555 !important;
+            background: #555555 !important;
         }
 
         body.dark-mode .timer-btn.start {
-            background: #8FEB60 !important;
+            background: #000000 !important;
             color: #000 !important;
         }
 
@@ -528,38 +528,38 @@
         /* Grocery List Dark Mode */
         body.dark-mode .grocery-item {
             background: #3a3a3a !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
         }
 
         body.dark-mode .grocery-check {
             background: #404040 !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
         }
 
         body.dark-mode .grocery-check.checked {
-            background: #8FEB60 !important;
+            background: #000000 !important;
             color: #000 !important;
         }
 
         body.dark-mode .grocery-text {
             background: #404040 !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
             color: #e0e0e0 !important;
         }
 
         body.dark-mode .grocery-del {
-            background: #555 !important;
+            background: #555555 !important;
             color: #e0e0e0 !important;
         }
 
         body.dark-mode .grocery-del:hover {
-            background: #666 !important;
+            background: #666666 !important;
         }
 
         .planner-title {
             font-size: 28px;
             font-weight: 700;
-            color: #333;
+            color: #000000;
             margin: 0;
             display: flex;
             align-items: center;
@@ -570,7 +570,7 @@
         .planner-subtitle {
             font-size: 18px;
             font-weight: 400;
-            color: #666;
+            color: #666666;
             margin: 8px 0 16px 0;
         }
 
@@ -585,8 +585,8 @@
 
         .week-nav-btn {
             background: white;
-            color: #333;
-            border: 1px solid #dee2e6;
+            color: #000000;
+            border: 1px solid #d0d0d0;
             padding: 8px 12px;
             border-radius: 6px;
             font-size: 12px;
@@ -602,13 +602,13 @@
 
         .week-nav-btn:hover {
             background: #f8f9fa;
-            border-color: #8FEB60;
+            border-color: #000000;
         }
 
         .week-nav-btn.active {
-            background: #8FEB60;
-            color: #000;
-            border-color: #8FEB60;
+            background: #000000;
+            color: #ffffff;
+            border-color: #ffffff;
         }
 
         .week-nav-btn.nav-arrow {
@@ -620,41 +620,41 @@
         .date-input {
             margin: 16px 0 8px 0;
             padding: 10px 16px;
-            border: 1px solid #dee2e6;
+            border: 1px solid #d0d0d0;
             border-radius: 8px;
             font-size: 14px;
             background: white;
-            color: #333;
+            color: #000000;
             transition: all 0.2s ease;
             min-height: 44px;
         }
 
         .date-input:focus {
             outline: none;
-            border-color: #8FEB60;
-            box-shadow: 0 0 0 2px rgba(143, 235, 96, 0.2);
+            border-color: #000000;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
         }
 
         /* Quote Input */
         .quote-input {
             width: 100%;
             padding: 12px 16px;
-            border: 1px solid #dee2e6;
+            border: 1px solid #d0d0d0;
             border-radius: 8px;
             font-size: 14px;
             font-style: italic;
             text-align: center;
             background: white;
-            color: #666;
+            color: #666666;
             transition: all 0.2s ease;
             min-height: 44px;
         }
 
         .quote-input:focus {
             outline: none;
-            border-color: #8FEB60;
-            box-shadow: 0 0 0 2px rgba(143, 235, 96, 0.2);
-            color: #333;
+            border-color: #000000;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+            color: #000000;
         }
 
         /* Page Navigation */
@@ -664,14 +664,14 @@
             display: flex;
             justify-content: center;
             gap: 8px;
-            border-bottom: 1px solid #e9ecef;
+            border-bottom: 1px solid #e0e0e0;
             flex-wrap: wrap;
         }
 
         .nav-btn {
             background: #f8f9fa;
-            color: #333;
-            border: 1px solid #dee2e6;
+            color: #000000;
+            border: 1px solid #d0d0d0;
             padding: 10px 16px;
             border-radius: 8px;
             font-size: 13px;
@@ -686,14 +686,14 @@
         }
 
         .nav-btn:hover {
-            background: #e9ecef;
-            border-color: #8FEB60;
+            background: #e0e0e0;
+            border-color: #000000;
         }
 
         .nav-btn.active {
-            background: #8FEB60;
-            color: #000;
-            border-color: #8FEB60;
+            background: #000000;
+            color: #ffffff;
+            border-color: #ffffff;
         }
 
         /* Page Styles */
@@ -735,7 +735,7 @@
         .section {
             background: white;
             border-radius: 12px;
-            border: 1px solid #e9ecef;
+            border: 1px solid #e0e0e0;
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             max-width: 100%;
@@ -745,13 +745,13 @@
         .section-header {
             background: #f8f9fa;
             padding: 16px 20px;
-            border-bottom: 1px solid #e9ecef;
+            border-bottom: 1px solid #e0e0e0;
         }
 
         .section-title {
             font-size: 16px;
             font-weight: 600;
-            color: #333;
+            color: #000000;
             margin: 0;
         }
 
@@ -780,8 +780,8 @@
         .priority-icon {
             width: 32px;
             height: 32px;
-            background: #8FEB60;
-            color: #333;
+            background: #000000;
+            color: #ffffff;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -794,7 +794,7 @@
         .priority-input {
             flex: 1;
             padding: 12px 16px;
-            border: 1px solid #dee2e6;
+            border: 1px solid #d0d0d0;
             border-radius: 8px;
             font-size: 14px;
             transition: all 0.2s ease;
@@ -806,8 +806,8 @@
 
         .priority-input:focus {
             outline: none;
-            border-color: #8FEB60;
-            box-shadow: 0 0 0 2px rgba(143, 235, 96, 0.2);
+            border-color: #000000;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
         }
 
         /* Todo Items */
@@ -824,7 +824,7 @@
         .todo-checkbox {
             width: 20px;
             height: 20px;
-            border: 2px solid #dee2e6;
+            border: 2px solid #d0d0d0;
             border-radius: 4px;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -839,13 +839,13 @@
         }
 
         .todo-checkbox:hover {
-            border-color: #A5F247;
+            border-color: #000000;
         }
 
         .todo-checkbox.filled {
-            background: #A5F247;
-            border-color: #A5F247;
-            color: #333;
+            background: #000000;
+            border-color: #ffffff;
+            color: #ffffff;
         }
 
         .todo-checkbox.filled::after {
@@ -857,7 +857,7 @@
         .todo-input {
             flex: 1;
             padding: 8px 12px;
-            border: 1px solid #dee2e6;
+            border: 1px solid #d0d0d0;
             border-radius: 6px;
             font-size: 14px;
             transition: all 0.2s ease;
@@ -869,8 +869,8 @@
 
         .todo-input:focus {
             outline: none;
-            border-color: #8FEB60;
-            box-shadow: 0 0 0 2px rgba(143, 235, 96, 0.2);
+            border-color: #000000;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
         }
 
         /* Schedule Items */
@@ -888,8 +888,8 @@
             width: 80px;
             font-size: 12px;
             font-weight: 600;
-            color: #333;
-            background: #8FEB60;
+            color: #ffffff;
+            background: #000000;
             padding: 6px 8px;
             border-radius: 6px;
             text-align: center;
@@ -902,7 +902,7 @@
         .time-input {
             flex: 1;
             padding: 6px 10px;
-            border: 1px solid #dee2e6;
+            border: 1px solid #d0d0d0;
             border-radius: 6px;
             font-size: 16px;
             transition: all 0.2s ease;
@@ -914,8 +914,8 @@
 
         .time-input:focus {
             outline: none;
-            border-color: #8FEB60;
-            box-shadow: 0 0 0 2px rgba(143, 235, 96, 0.2);
+            border-color: #000000;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
         }
 
         /* Tracker Styles */
@@ -932,7 +932,7 @@
         .tracker-title {
             font-size: 14px;
             font-weight: 600;
-            color: #333;
+            color: #000000;
             margin-bottom: 12px;
         }
 
@@ -946,7 +946,7 @@
         .mood-option {
             width: 48px;
             height: 48px;
-            border: 2px solid #dee2e6;
+            border: 2px solid #d0d0d0;
             border-radius: 50%;
             cursor: pointer;
             font-size: 20px;
@@ -962,13 +962,13 @@
         }
 
         .mood-option:hover {
-            border-color: #8FEB60;
+            border-color: #000000;
             transform: scale(1.1);
         }
 
         .mood-option.selected {
-            background: #8FEB60;
-            border-color: #8FEB60;
+            background: #000000;
+            border-color: #ffffff;
             transform: scale(1.1);
         }
 
@@ -982,7 +982,7 @@
         .water-glass {
             width: 32px;
             height: 32px;
-            border: 2px solid #dee2e6;
+            border: 2px solid #d0d0d0;
             border-radius: 6px;
             cursor: pointer;
             font-size: 16px;
@@ -998,14 +998,14 @@
         }
 
         .water-glass:hover {
-            border-color: #8FEB60;
+            border-color: #000000;
             transform: scale(1.1);
         }
 
         .water-glass.filled {
-            background: #8FEB60;
-            border-color: #8FEB60;
-            color: #333;
+            background: #000000;
+            border-color: #ffffff;
+            color: #ffffff;
         }
 
         /* Text Areas */
@@ -1013,7 +1013,7 @@
             width: 100%;
             min-height: 120px;
             padding: 12px;
-            border: 1px solid #dee2e6;
+            border: 1px solid #d0d0d0;
             border-radius: 8px;
             font-size: 14px;
             font-family: inherit;
@@ -1023,8 +1023,8 @@
 
         .notes-textarea:focus, .brain-dump-area:focus {
             outline: none;
-            border-color: #8FEB60;
-            box-shadow: 0 0 0 2px rgba(143, 235, 96, 0.2);
+            border-color: #000000;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
         }
 
         .brain-dump-area {
@@ -1079,8 +1079,8 @@
         }
 
         .add-capture-btn {
-            background: #A5F247;
-            color: #333;
+            background: #000000;
+            color: #ffffff;
             border: none;
             padding: 10px 20px;
             border-radius: 8px;
@@ -1106,7 +1106,7 @@
         .capture-input {
             flex: 1;
             padding: 10px 12px;
-            border: 1px solid #dee2e6;
+            border: 1px solid #d0d0d0;
             border-radius: 8px;
             font-size: 16px;
             transition: all 0.2s ease;
@@ -1115,8 +1115,8 @@
 
         .capture-input:focus {
             outline: none;
-            border-color: #8FEB60;
-            box-shadow: 0 0 0 2px rgba(143, 235, 96, 0.2);
+            border-color: #000000;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
         }
 
         /* Meal Planning */
@@ -1130,13 +1130,13 @@
             background: #f8f9fa;
             padding: 16px;
             border-radius: 8px;
-            border: 1px solid #e9ecef;
+            border: 1px solid #e0e0e0;
         }
 
         .meal-title {
             font-size: 16px;
             font-weight: 600;
-            color: #333;
+            color: #000000;
             margin-bottom: 12px;
             text-align: center;
         }
@@ -1144,7 +1144,7 @@
         .meal-input {
             width: 100%;
             padding: 8px 10px;
-            border: 1px solid #dee2e6;
+            border: 1px solid #d0d0d0;
             border-radius: 6px;
             font-size: 16px;
             margin-bottom: 8px;
@@ -1154,8 +1154,8 @@
 
         .meal-input:focus {
             outline: none;
-            border-color: #8FEB60;
-            box-shadow: 0 0 0 2px rgba(143, 235, 96, 0.2);
+            border-color: #000000;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
         }
 
         /* New Meal Planner Styles */
@@ -1167,14 +1167,14 @@
             padding: 12px;
             background: #f8f9fa;
             border-radius: 8px;
-            border: 1px solid #e9ecef;
+            border: 1px solid #e0e0e0;
         }
 
         .meal-icon {
             width: 40px;
             height: 40px;
-            background: #8FEB60;
-            color: #333;
+            background: #000000;
+            color: #000000;
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -1186,7 +1186,7 @@
         .meal-input-new {
             flex: 1;
             padding: 12px 16px;
-            border: 1px solid #dee2e6;
+            border: 1px solid #d0d0d0;
             border-radius: 6px;
             font-size: 14px;
             transition: all 0.2s ease;
@@ -1196,15 +1196,15 @@
 
         .meal-input-new:focus {
             outline: none;
-            border-color: #8FEB60;
-            box-shadow: 0 0 0 2px rgba(143, 235, 96, 0.2);
+            border-color: #000000;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
         }
 
         .meal-prep-textarea {
             width: 100%;
             min-height: 120px;
             padding: 12px 16px;
-            border: 1px solid #dee2e6;
+            border: 1px solid #d0d0d0;
             border-radius: 8px;
             font-size: 14px;
             font-family: inherit;
@@ -1215,8 +1215,8 @@
 
         .meal-prep-textarea:focus {
             outline: none;
-            border-color: #8FEB60;
-            box-shadow: 0 0 0 2px rgba(143, 235, 96, 0.2);
+            border-color: #000000;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
         }
 
         .weekly-meal-plan {
@@ -1232,14 +1232,14 @@
             padding: 12px;
             background: #f8f9fa;
             border-radius: 8px;
-            border: 1px solid #e9ecef;
+            border: 1px solid #e0e0e0;
             max-width: 100%;
             box-sizing: border-box;
         }
 
         .day-label {
             font-weight: 600;
-            color: #333;
+            color: #000000;
             min-width: 80px;
             font-size: 14px;
             flex-shrink: 0;
@@ -1248,7 +1248,7 @@
         .weekly-meal-input {
             flex: 1;
             padding: 8px 12px;
-            border: 1px solid #dee2e6;
+            border: 1px solid #d0d0d0;
             border-radius: 6px;
             font-size: 16px;
             transition: all 0.2s ease;
@@ -1260,8 +1260,8 @@
 
         .weekly-meal-input:focus {
             outline: none;
-            border-color: #8FEB60;
-            box-shadow: 0 0 0 2px rgba(143, 235, 96, 0.2);
+            border-color: #000000;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
         }
 
         /* Weekly View Styles - Enhanced Layout */
@@ -1277,7 +1277,7 @@
             width: 280px;
             background: white;
             border-radius: 12px;
-            border: 1px solid #e9ecef;
+            border: 1px solid #e0e0e0;
             padding: 20px;
             overflow-y: auto;
             display: flex;
@@ -1288,7 +1288,7 @@
         .sidebar-title {
             font-size: 12px;
             font-weight: 700;
-            color: #333;
+            color: #000000;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 12px;
@@ -1304,7 +1304,7 @@
         .energy-level {
             width: 40px;
             height: 40px;
-            border: 2px solid #dee2e6;
+            border: 2px solid #d0d0d0;
             border-radius: 50%;
             cursor: pointer;
             font-size: 14px;
@@ -1317,14 +1317,14 @@
         }
 
         .energy-level:hover {
-            border-color: #8FEB60;
+            border-color: #000000;
             transform: scale(1.1);
         }
 
         .energy-level.selected {
-            background: #8FEB60;
-            border-color: #8FEB60;
-            color: #000;
+            background: #000000;
+            border-color: #ffffff;
+            color: #ffffff;
         }
 
         .distraction-list {
@@ -1340,13 +1340,13 @@
             padding: 8px;
             background: #f8f9fa;
             border-radius: 6px;
-            border: 1px solid #e9ecef;
+            border: 1px solid #e0e0e0;
         }
 
         .distraction-checkbox {
             width: 20px;
             height: 20px;
-            border: 2px solid #dee2e6;
+            border: 2px solid #d0d0d0;
             border-radius: 4px;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -1357,13 +1357,13 @@
         }
 
         .distraction-checkbox:hover {
-            border-color: #8FEB60;
+            border-color: #000000;
         }
 
         .distraction-checkbox.checked {
-            background: #8FEB60;
-            border-color: #8FEB60;
-            color: #000;
+            background: #000000;
+            border-color: #ffffff;
+            color: #ffffff;
         }
 
         .distraction-checkbox.checked::after {
@@ -1374,7 +1374,7 @@
 
         .distraction-label {
             font-size: 14px;
-            color: #333;
+            color: #000000;
         }
 
         /* Timer Styles */
@@ -1385,7 +1385,7 @@
         .timer-display {
             font-size: 48px;
             font-weight: 700;
-            color: #333;
+            color: #000000;
             margin: 20px 0;
             font-family: 'Courier New', monospace;
         }
@@ -1400,8 +1400,8 @@
 
         .timer-preset {
             background: #f8f9fa;
-            color: #333;
-            border: 1px solid #dee2e6;
+            color: #000000;
+            border: 1px solid #d0d0d0;
             padding: 8px 12px;
             border-radius: 6px;
             font-size: 12px;
@@ -1412,9 +1412,9 @@
 
         .timer-preset:hover,
         .timer-preset.active {
-            background: #8FEB60;
-            color: #000;
-            border-color: #8FEB60;
+            background: #000000;
+            color: #ffffff;
+            border-color: #ffffff;
         }
 
         .timer-controls {
@@ -1426,8 +1426,8 @@
 
         .timer-btn {
             background: #f8f9fa;
-            color: #333;
-            border: 1px solid #dee2e6;
+            color: #000000;
+            border: 1px solid #d0d0d0;
             padding: 10px 16px;
             border-radius: 6px;
             font-size: 14px;
@@ -1437,27 +1437,27 @@
         }
 
         .timer-btn:hover {
-            background: #e9ecef;
+            background: #e0e0e0;
         }
 
         .timer-btn.start {
-            background: #8FEB60;
-            color: #000;
-            border-color: #8FEB60;
+            background: #000000;
+            color: #ffffff;
+            border-color: #ffffff;
         }
 
         /* Calendar Styles */
         .monthly-calendar {
             background: white;
             border-radius: 12px;
-            border: 1px solid #e9ecef;
+            border: 1px solid #e0e0e0;
             overflow: hidden;
         }
 
         .calendar-header {
             background: #f8f9fa;
             padding: 16px;
-            border-bottom: 1px solid #e9ecef;
+            border-bottom: 1px solid #e0e0e0;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -1465,8 +1465,8 @@
 
         .calendar-nav {
             background: #f8f9fa;
-            color: #333;
-            border: 1px solid #dee2e6;
+            color: #000000;
+            border: 1px solid #d0d0d0;
             padding: 8px 12px;
             border-radius: 6px;
             font-size: 14px;
@@ -1476,8 +1476,8 @@
         }
 
         .calendar-nav:hover {
-            background: #e9ecef;
-            border-color: #8FEB60;
+            background: #e0e0e0;
+            border-color: #000000;
         }
 
         .calendar-grid {
@@ -1488,17 +1488,17 @@
 
         .calendar-day-header {
             background: #f8f9fa;
-            color: #666;
+            color: #666666;
             font-size: 12px;
             font-weight: 600;
             padding: 12px 8px;
             text-align: center;
-            border: 1px solid #e9ecef;
+            border: 1px solid #e0e0e0;
         }
 
         .calendar-day {
             background: white;
-            border: 1px solid #e9ecef;
+            border: 1px solid #e0e0e0;
             min-height: 80px;
             padding: 8px;
             cursor: pointer;
@@ -1512,13 +1512,13 @@
         }
 
         .calendar-day.today {
-            background: #8FEB60;
+            background: #000000;
             color: #000;
             font-weight: 600;
         }
 
         .calendar-day.selected-date {
-            background: #A5F247;
+            background: #000000;
             color: #000;
             font-weight: 600;
         }
@@ -1540,8 +1540,8 @@
         }
 
         .calendar-event {
-            background: #A5F247;
-            color: #333;
+            background: #000000;
+            color: #ffffff;
             padding: 2px 6px;
             border-radius: 4px;
             margin-bottom: 2px;
@@ -1581,14 +1581,14 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 24px;
-            border-bottom: 1px solid #e9ecef;
+            border-bottom: 1px solid #e0e0e0;
         }
 
         .event-modal-header h3 {
             margin: 0;
             font-size: 18px;
             font-weight: 600;
-            color: #333;
+            color: #000000;
         }
 
         .event-modal-close {
@@ -1596,7 +1596,7 @@
             border: none;
             font-size: 24px;
             cursor: pointer;
-            color: #666;
+            color: #666666;
             padding: 0;
             width: 30px;
             height: 30px;
@@ -1609,7 +1609,7 @@
 
         .event-modal-close:hover {
             background: #f8f9fa;
-            color: #333;
+            color: #000000;
         }
 
         .event-modal-body {
@@ -1619,7 +1619,7 @@
         .event-input, .event-textarea {
             width: 100%;
             padding: 12px 16px;
-            border: 2px solid #e9ecef;
+            border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 14px;
             margin-bottom: 16px;
@@ -1629,7 +1629,7 @@
 
         .event-input:focus, .event-textarea:focus {
             outline: none;
-            border-color: #A5F247;
+            border-color: #000000;
             box-shadow: 0 0 0 3px rgba(165, 242, 71, 0.1);
         }
 
@@ -1643,7 +1643,7 @@
             justify-content: flex-end;
             gap: 12px;
             padding: 20px 24px;
-            border-top: 1px solid #e9ecef;
+            border-top: 1px solid #e0e0e0;
         }
 
         .event-btn {
@@ -1658,17 +1658,17 @@
 
         .event-btn-cancel {
             background: #f8f9fa;
-            color: #666;
-            border: 1px solid #dee2e6;
+            color: #666666;
+            border: 1px solid #d0d0d0;
         }
 
         .event-btn-cancel:hover {
-            background: #e9ecef;
+            background: #e0e0e0;
         }
 
         .event-btn-save {
-            background: #A5F247;
-            color: #333;
+            background: #000000;
+            color: #ffffff;
         }
 
         .event-btn-save:hover {
@@ -1690,7 +1690,7 @@
         }
 
         body.dark-mode .event-modal-header {
-            border-bottom-color: #555 !important;
+            border-bottom-color: #555555 !important;
         }
 
         body.dark-mode .event-modal-header h3 {
@@ -1708,33 +1708,33 @@
         body.dark-mode .event-input,
         body.dark-mode .event-textarea {
             background: #3a3a3a !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
             color: #e0e0e0 !important;
         }
 
         body.dark-mode .event-input:focus,
         body.dark-mode .event-textarea:focus {
-            border-color: #A5F247 !important;
+            border-color: #000000 !important;
             box-shadow: 0 0 0 3px rgba(165, 242, 71, 0.2) !important;
         }
 
         body.dark-mode .event-modal-footer {
-            border-top-color: #555 !important;
+            border-top-color: #555555 !important;
         }
 
         body.dark-mode .event-btn-cancel {
             background: #404040 !important;
             color: #e0e0e0 !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
         }
 
         body.dark-mode .event-btn-cancel:hover {
-            background: #555 !important;
+            background: #555555 !important;
         }
 
         body.dark-mode .calendar-event {
-            background: #A5F247 !important;
-            color: #333 !important;
+            background: #000000 !important;
+            color: #000000 !important;
         }
 
         /* Grocery List Styles */
@@ -1752,13 +1752,13 @@
             margin-bottom: 8px;
             background: #f8f9fa;
             border-radius: 6px;
-            border: 1px solid #e9ecef;
+            border: 1px solid #e0e0e0;
         }
 
         .grocery-check {
             width: 20px;
             height: 20px;
-            border: 2px solid #dee2e6;
+            border: 2px solid #d0d0d0;
             border-radius: 4px;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -1769,13 +1769,13 @@
         }
 
         .grocery-check:hover {
-            border-color: #8FEB60;
+            border-color: #000000;
         }
 
         .grocery-check.checked {
-            background: #8FEB60;
-            border-color: #8FEB60;
-            color: #000;
+            background: #000000;
+            border-color: #ffffff;
+            color: #ffffff;
         }
 
         .grocery-check.checked::after {
@@ -1787,7 +1787,7 @@
         .grocery-text {
             flex: 1;
             padding: 8px 12px;
-            border: 1px solid #dee2e6;
+            border: 1px solid #d0d0d0;
             border-radius: 4px;
             font-size: 14px;
             background: white;
@@ -1795,14 +1795,14 @@
 
         .grocery-text:focus {
             outline: none;
-            border-color: #8FEB60;
-            box-shadow: 0 0 0 2px rgba(143, 235, 96, 0.2);
+            border-color: #000000;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
         }
 
         .grocery-del {
             background: #f8f9fa;
-            color: #666;
-            border: 1px solid #dee2e6;
+            color: #666666;
+            border: 1px solid #d0d0d0;
             width: 28px;
             height: 28px;
             border-radius: 4px;
@@ -1815,8 +1815,8 @@
         }
 
         .grocery-del:hover {
-            background: #e9ecef;
-            color: #333;
+            background: #e0e0e0;
+            color: #000000;
         }
 
         /* Responsive Design */
@@ -2388,7 +2388,7 @@
                         <ul id="groceryList" class="grocery-list">
                             <!-- Grocery items will be added dynamically -->
                         </ul>
-                        <button onclick="addGroceryItem()" style="background: #A5F247; color: #333; border: none; padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 12px;">+ Add Item</button>
+                        <button onclick="addGroceryItem()" style="background: #000000; color: #ffffff; border: none; padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 12px;">+ Add Item</button>
                     </div>
                 </div>
             </div>
@@ -2502,7 +2502,7 @@
                         <div class="monthly-calendar">
                             <div class="calendar-header">
                                 <button class="calendar-nav" onclick="changeMonth(-1)">‹ Previous</button>
-                                <h3 id="monthYear" style="font-size: 18px; font-weight: 600; color: #333; text-align: center; flex: 1;"></h3>
+                                <h3 id="monthYear" style="font-size: 18px; font-weight: 600; color: #000000; text-align: center; flex: 1;"></h3>
                                 <button class="calendar-nav" onclick="changeMonth(1)">Next ›</button>
                             </div>
                             <div class="calendar-grid">
@@ -2766,7 +2766,7 @@
                         </div>
                         <div class="section-content">
                             <div style="margin-bottom: 24px;">
-                                <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 12px; color: #333;">Current Energy Level</h4>
+                                <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 12px; color: #000000;">Current Energy Level</h4>
                                 <div class="energy-meter">
                                     <div class="energy-level" data-energy="1" onclick="selectEnergyLevel(this, 'energy')">1</div>
                                     <div class="energy-level" data-energy="2" onclick="selectEnergyLevel(this, 'energy')">2</div>
@@ -2776,7 +2776,7 @@
                                 </div>
                             </div>
                             <div style="margin-bottom: 24px;">
-                                <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 12px; color: #333;">Current Focus Level</h4>
+                                <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 12px; color: #000000;">Current Focus Level</h4>
                                 <div class="energy-meter">
                                     <div class="energy-level" data-focus="1" onclick="selectEnergyLevel(this, 'focus')">1</div>
                                     <div class="energy-level" data-focus="2" onclick="selectEnergyLevel(this, 'focus')">2</div>
@@ -3929,7 +3929,7 @@
         
         .week-day-card { 
             width: 100%;
-            border: 1px solid #e9ecef; 
+            border: 1px solid #e0e0e0; 
             border-radius: 16px; 
             padding: 16px; 
             background: #fff; 
@@ -3938,7 +3938,7 @@
         .week-day-title { 
             font-weight: 700; 
             letter-spacing: 0.04em; 
-            color: #333; 
+            color: #000000; 
             margin-bottom: 10px; 
         }
         
@@ -3954,7 +3954,7 @@
         .week-input-row .weekly-task-input { 
             flex: 1;
             padding: 12px 16px;
-            border: 2px solid #e9ecef;
+            border: 2px solid #e0e0e0;
             border-radius: 12px;
             font-size: 16px;
             background: #fff;
@@ -3966,7 +3966,7 @@
         
         .week-input-row .weekly-task-input:focus {
             outline: none;
-            border-color: #A5F247;
+            border-color: #000000;
             box-shadow: 0 0 0 3px rgba(165, 242, 71, 0.1);
             transform: translateY(-1px);
         }
@@ -3974,9 +3974,9 @@
         .week-add-btn { 
             padding: 12px 20px; 
             border-radius: 12px;
-            background: linear-gradient(135deg, #A5F247 0%, #8FE02A 100%);
+            background: #2d2d2d;
             border: none;
-            color: #333;
+            color: #ffffff;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -4003,7 +4003,7 @@
             align-items: center; 
             gap: 10px; 
             padding: 8px 10px; 
-            border: 1px solid #e9ecef; 
+            border: 1px solid #e0e0e0; 
             border-radius: 10px; 
             margin-bottom: 8px; 
             background: #f8f9fa; 
@@ -4021,15 +4021,15 @@
         }
         
         .week-task-check.done { 
-            background: #A5F247; 
-            border-color: #A5F247; 
+            background: #000000; 
+            border-color: #ffffff; 
         }
         
         .week-task-check.done::after {
             content: '✓';
             font-size: 12px;
             font-weight: bold;
-            color: #333;
+            color: #ffffff;
         }
         
         .week-task-text { 
@@ -4055,18 +4055,18 @@
         
         body.dark-mode .week-input-row .weekly-task-input {
             background: #3a3a3a !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
             color: #e0e0e0 !important;
         }
         
         body.dark-mode .week-input-row .weekly-task-input:focus {
-            border-color: #A5F247 !important;
+            border-color: #000000 !important;
             box-shadow: 0 0 0 3px rgba(165, 242, 71, 0.2) !important;
         }
         
         body.dark-mode .week-task-item { 
             background: #3a3a3a !important; 
-            border-color: #555 !important; 
+            border-color: #555555 !important; 
         }
         
         body.dark-mode .week-day-title { 
@@ -4093,7 +4093,7 @@
             align-items: center; 
             gap: 8px; 
             padding: 10px; 
-            border: 1px solid #e9ecef; 
+            border: 1px solid #e0e0e0; 
             border-radius: 8px; 
             margin-bottom: 8px; 
             background: #f8f9fa; 
@@ -4102,7 +4102,7 @@
         .grocery-check { 
             width: 18px; 
             height: 18px; 
-            border: 2px solid #dee2e6; 
+            border: 2px solid #d0d0d0; 
             border-radius: 4px; 
             cursor: pointer; 
             display: flex; 
@@ -4111,15 +4111,15 @@
         }
         
         .grocery-check.checked { 
-            background: #A5F247; 
-            border-color: #A5F247; 
+            background: #000000; 
+            border-color: #ffffff; 
         }
         
         .grocery-check.checked::after {
             content: '✓';
             font-size: 12px;
             font-weight: bold;
-            color: #333;
+            color: #ffffff;
         }
         
         .grocery-text { 
@@ -4140,7 +4140,7 @@
         /* Dark mode styles for grocery list */
         body.dark-mode .grocery-item { 
             background: #3a3a3a !important; 
-            border-color: #555 !important; 
+            border-color: #555555 !important; 
         }
         
         body.dark-mode .grocery-text { 
@@ -4159,7 +4159,7 @@
         }
         
         .monthly-goal-item {
-            border: 1px solid #e9ecef;
+            border: 1px solid #e0e0e0;
             border-radius: 16px;
             padding: 20px;
             background: #fff;
@@ -4177,7 +4177,7 @@
         .month-title {
             font-size: 18px;
             font-weight: 700;
-            color: #333;
+            color: #000000;
             margin: 0;
             letter-spacing: 0.02em;
         }
@@ -4192,7 +4192,7 @@
         .monthly-goal-input {
             flex: 1;
             padding: 12px 16px;
-            border: 2px solid #e9ecef;
+            border: 2px solid #e0e0e0;
             border-radius: 12px;
             font-size: 16px;
             background: #fff;
@@ -4202,7 +4202,7 @@
         
         .monthly-goal-input:focus {
             outline: none;
-            border-color: #A5F247;
+            border-color: #000000;
             box-shadow: 0 0 0 3px rgba(165, 242, 71, 0.1);
             transform: translateY(-1px);
         }
@@ -4210,9 +4210,9 @@
         .add-goal-btn {
             padding: 12px 20px;
             border-radius: 12px;
-            background: linear-gradient(135deg, #A5F247 0%, #8FE02A 100%);
+            background: #2d2d2d;
             border: none;
-            color: #333;
+            color: #ffffff;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -4239,7 +4239,7 @@
             align-items: center;
             gap: 12px;
             padding: 12px 16px;
-            border: 1px solid #e9ecef;
+            border: 1px solid #e0e0e0;
             border-radius: 10px;
             margin-bottom: 8px;
             background: #f8f9fa;
@@ -4263,15 +4263,15 @@
         }
         
         .goal-checkbox.completed {
-            background: #A5F247;
-            border-color: #A5F247;
+            background: #000000;
+            border-color: #ffffff;
         }
         
         .goal-checkbox.completed::after {
             content: '✓';
             font-size: 14px;
             font-weight: bold;
-            color: #333;
+            color: #ffffff;
         }
         
         .goal-text {
@@ -4280,7 +4280,7 @@
             background: transparent;
             outline: none;
             font-size: 14px;
-            color: #333;
+            color: #000000;
         }
         
         .goal-delete-btn {
@@ -4299,7 +4299,7 @@
         /* Dark mode styles for monthly goals */
         body.dark-mode .monthly-goal-item {
             background: #2d2d2d !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
         }
         
         body.dark-mode .month-title {
@@ -4308,18 +4308,18 @@
         
         body.dark-mode .monthly-goal-input {
             background: #3a3a3a !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
             color: #e0e0e0 !important;
         }
         
         body.dark-mode .monthly-goal-input:focus {
-            border-color: #A5F247 !important;
+            border-color: #000000 !important;
             box-shadow: 0 0 0 3px rgba(165, 242, 71, 0.2) !important;
         }
         
         body.dark-mode .month-goal-item {
             background: #3a3a3a !important;
-            border-color: #555 !important;
+            border-color: #555555 !important;
         }
         
         body.dark-mode .month-goal-item:hover {
@@ -4371,7 +4371,471 @@
                 width: 100%;
             }
         }
+
+        /* Export Button Styles - Monochrome Theme */
+        .export-container {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .export-btn {
+            background: #ffffff;
+            color: #000000;
+            border: 2px solid #000000;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .export-btn:hover {
+            background: #000000;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .export-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Dark mode export buttons */
+        body.dark-mode .export-btn {
+            background: #2d2d2d;
+            color: #e0e0e0;
+            border-color: #e0e0e0;
+        }
+
+        body.dark-mode .export-btn:hover {
+            background: #e0e0e0;
+            color: #000000;
+            border-color: #e0e0e0;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .export-container {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .export-btn {
+                width: 100%;
+            }
+        }
     </style>
+
+    <script>
+        // Export Functionality for Task Rock Planner
+        // Supports PDF and Excel export with professional formatting
+
+        // Add export buttons to header
+        function addExportButtons() {
+            const header = document.querySelector('.planner-header');
+            if (!header) return;
+            
+            const exportContainer = document.createElement('div');
+            exportContainer.className = 'export-container';
+            
+            const pdfBtn = document.createElement('button');
+            pdfBtn.className = 'export-btn export-pdf-btn';
+            pdfBtn.innerHTML = '📄 Export as PDF';
+            pdfBtn.onclick = exportToPDF;
+            
+            const excelBtn = document.createElement('button');
+            excelBtn.className = 'export-btn export-excel-btn';
+            excelBtn.innerHTML = '📊 Export as Excel';
+            excelBtn.onclick = exportToExcel;
+            
+            exportContainer.appendChild(pdfBtn);
+            exportContainer.appendChild(excelBtn);
+            header.appendChild(exportContainer);
+        }
+
+        // Export current page to PDF
+        async function exportToPDF() {
+            const activePage = document.querySelector('.page.active');
+            if (!activePage) {
+                alert('No active page to export');
+                return;
+            }
+            
+            // Temporarily switch to light mode for export
+            const wasDarkMode = document.body.classList.contains('dark-mode');
+            if (wasDarkMode) {
+                document.body.classList.remove('dark-mode');
+            }
+            
+            const pageTitle = document.querySelector('.nav-btn.active')?.textContent || 'Planner';
+            const date = document.getElementById('current-date')?.value || new Date().toISOString().slice(0, 10);
+            
+            // Create a clean copy for printing
+            const printContent = createPrintableContent(activePage, pageTitle, date);
+            
+            // Open print dialog
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>${pageTitle} - ${date}</title>
+                    <style>
+                        @page {
+                            size: A4;
+                            margin: 1cm;
+                        }
+                        
+                        * {
+                            margin: 0;
+                            padding: 0;
+                            box-sizing: border-box;
+                        }
+                        
+                        body {
+                            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                            font-size: 11pt;
+                            line-height: 1.5;
+                            color: #000000;
+                            background: white;
+                            padding: 20px;
+                        }
+                        
+                        .print-header {
+                            text-align: center;
+                            margin-bottom: 30px;
+                            padding-bottom: 15px;
+                            border-bottom: 2px solid #000000;
+                        }
+                        
+                        .print-title {
+                            font-size: 24pt;
+                            font-weight: 700;
+                            color: #000000;
+                            margin-bottom: 8px;
+                        }
+                        
+                        .print-date {
+                            font-size: 14pt;
+                            color: #4a4a4a;
+                        }
+                        
+                        .section {
+                            margin-bottom: 25px;
+                            page-break-inside: avoid;
+                            border: 1px solid #d0d0d0;
+                            border-radius: 8px;
+                            overflow: hidden;
+                        }
+                        
+                        .section-header {
+                            background: #f5f5f5;
+                            padding: 12px 16px;
+                            border-bottom: 1px solid #d0d0d0;
+                        }
+                        
+                        .section-title {
+                            font-size: 14pt;
+                            font-weight: 600;
+                            color: #000000;
+                        }
+                        
+                        .section-content {
+                            padding: 16px;
+                            background: white;
+                        }
+                        
+                        input, textarea {
+                            border: none;
+                            border-bottom: 1px solid #d0d0d0;
+                            padding: 4px 0;
+                            font-size: 11pt;
+                            width: 100%;
+                            background: transparent;
+                            color: #000000;
+                        }
+                        
+                        .priority-item, .todo-item, .schedule-item {
+                            margin-bottom: 12px;
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                        }
+                        
+                        .checkbox-placeholder {
+                            width: 16px;
+                            height: 16px;
+                            border: 2px solid #000000;
+                            border-radius: 3px;
+                            flex-shrink: 0;
+                        }
+                        
+                        .checkbox-placeholder.filled {
+                            background: #000000;
+                            position: relative;
+                        }
+                        
+                        .checkbox-placeholder.filled::after {
+                            content: '✓';
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            color: white;
+                            font-size: 12px;
+                            font-weight: bold;
+                        }
+                        
+                        .priority-icon {
+                            width: 24px;
+                            height: 24px;
+                            background: #000000;
+                            color: white;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 11pt;
+                            font-weight: 700;
+                            flex-shrink: 0;
+                        }
+                        
+                        .time-slot {
+                            background: #000000;
+                            color: white;
+                            padding: 4px 8px;
+                            border-radius: 4px;
+                            font-size: 10pt;
+                            font-weight: 600;
+                            flex-shrink: 0;
+                        }
+                        
+                        .meal-section {
+                            margin-bottom: 16px;
+                            padding: 12px;
+                            border: 1px solid #d0d0d0;
+                            border-radius: 6px;
+                        }
+                        
+                        .meal-title {
+                            font-weight: 600;
+                            margin-bottom: 8px;
+                            color: #000000;
+                        }
+                        
+                        .tracker-grid {
+                            display: flex;
+                            gap: 8px;
+                            flex-wrap: wrap;
+                        }
+                        
+                        .water-glass, .mood-option {
+                            width: 30px;
+                            height: 30px;
+                            border: 2px solid #000000;
+                            border-radius: 4px;
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                        
+                        .water-glass.filled, .mood-option.selected {
+                            background: #000000;
+                            color: white;
+                        }
+                        
+                        @media print {
+                            body {
+                                padding: 0;
+                            }
+                            
+                            .no-print {
+                                display: none !important;
+                            }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="print-header">
+                        <div class="print-title">${pageTitle}</div>
+                        <div class="print-date">${date}</div>
+                    </div>
+                    ${printContent}
+                </body>
+                </html>
+            `);
+            
+            printWindow.document.close();
+            
+            // Wait for content to load then print
+            setTimeout(() => {
+                printWindow.print();
+                
+                // Restore dark mode if it was enabled
+                if (wasDarkMode) {
+                    document.body.classList.add('dark-mode');
+                }
+            }, 500);
+        }
+
+        // Create printable content from active page
+        function createPrintableContent(page, title, date) {
+            const clone = page.cloneNode(true);
+            
+            // Remove interactive elements that don't make sense in print
+            const elementsToRemove = clone.querySelectorAll('button:not(.no-remove), .dark-mode-toggle, .page-navigation');
+            elementsToRemove.forEach(el => el.remove());
+            
+            // Convert checkboxes to print-friendly versions
+            const checkboxes = clone.querySelectorAll('.todo-checkbox, .water-glass, .mood-option, .grocery-check, .week-task-check, .goal-checkbox');
+            checkboxes.forEach(checkbox => {
+                const placeholder = document.createElement('div');
+                placeholder.className = 'checkbox-placeholder';
+                if (checkbox.classList.contains('filled') || 
+                    checkbox.classList.contains('selected') || 
+                    checkbox.classList.contains('checked') ||
+                    checkbox.classList.contains('done') ||
+                    checkbox.classList.contains('completed')) {
+                    placeholder.classList.add('filled');
+                }
+                checkbox.replaceWith(placeholder);
+            });
+            
+            // Make inputs read-only and show their values
+            const inputs = clone.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                const value = input.value || input.placeholder || '';
+                input.setAttribute('value', value);
+                input.setAttribute('readonly', 'readonly');
+            });
+            
+            return clone.innerHTML;
+        }
+
+        // Export current page to Excel (CSV format)
+        function exportToExcel() {
+            const activePage = document.querySelector('.page.active');
+            if (!activePage) {
+                alert('No active page to export');
+                return;
+            }
+            
+            // Temporarily switch to light mode for export
+            const wasDarkMode = document.body.classList.contains('dark-mode');
+            if (wasDarkMode) {
+                document.body.classList.remove('dark-mode');
+            }
+            
+            const pageTitle = document.querySelector('.nav-btn.active')?.textContent || 'Planner';
+            const date = document.getElementById('current-date')?.value || new Date().toISOString().slice(0, 10);
+            
+            // Extract data from the page
+            let csvContent = `Task Rock Planner - ${pageTitle}\nDate: ${date}\n\n`;
+            
+            // Process each section
+            const sections = activePage.querySelectorAll('.section');
+            sections.forEach(section => {
+                const sectionTitle = section.querySelector('.section-title')?.textContent || '';
+                csvContent += `\n${sectionTitle}\n`;
+                csvContent += '='.repeat(sectionTitle.length) + '\n';
+                
+                // Extract priorities
+                const priorities = section.querySelectorAll('.priority-item');
+                priorities.forEach((item, index) => {
+                    const input = item.querySelector('.priority-input');
+                    if (input && input.value) {
+                        csvContent += `Priority ${index + 1},${escapeCSV(input.value)}\n`;
+                    }
+                });
+                
+                // Extract todos
+                const todos = section.querySelectorAll('.todo-item');
+                todos.forEach(item => {
+                    const checkbox = item.querySelector('.todo-checkbox');
+                    const input = item.querySelector('.todo-input');
+                    if (input && input.value) {
+                        const status = checkbox?.classList.contains('filled') ? '[✓]' : '[ ]';
+                        csvContent += `${status},${escapeCSV(input.value)}\n`;
+                    }
+                });
+                
+                // Extract schedule items
+                const scheduleItems = section.querySelectorAll('.schedule-item');
+                scheduleItems.forEach(item => {
+                    const timeSlot = item.querySelector('.time-slot')?.textContent || '';
+                    const input = item.querySelector('.schedule-input');
+                    if (input && input.value) {
+                        csvContent += `${timeSlot},${escapeCSV(input.value)}\n`;
+                    }
+                });
+                
+                // Extract meal planning
+                const mealSections = section.querySelectorAll('.meal-section');
+                mealSections.forEach(meal => {
+                    const mealTitle = meal.querySelector('.meal-title')?.textContent || '';
+                    const mealInput = meal.querySelector('.meal-input');
+                    if (mealInput && mealInput.value) {
+                        csvContent += `${mealTitle},${escapeCSV(mealInput.value)}\n`;
+                    }
+                });
+                
+                // Extract notes
+                const noteInputs = section.querySelectorAll('textarea');
+                noteInputs.forEach(textarea => {
+                    if (textarea.value) {
+                        csvContent += `\nNotes:\n${escapeCSV(textarea.value)}\n`;
+                    }
+                });
+                
+                csvContent += '\n';
+            });
+            
+            // Create and download CSV file
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            
+            link.setAttribute('href', url);
+            link.setAttribute('download', `TaskRock_${pageTitle}_${date}.csv`);
+            link.style.visibility = 'hidden';
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Restore dark mode if it was enabled
+            if (wasDarkMode) {
+                document.body.classList.add('dark-mode');
+            }
+        }
+
+        // Helper function to escape CSV values
+        function escapeCSV(value) {
+            if (typeof value !== 'string') return '';
+            
+            // Escape quotes and wrap in quotes if contains comma, quote, or newline
+            if (value.includes(',') || value.includes('"') || value.includes('\n')) {
+                return '"' + value.replace(/"/g, '""') + '"';
+            }
+            return value;
+        }
+
+        // Initialize export functionality when DOM is loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', addExportButtons);
+        } else {
+            addExportButtons();
+        }
+    </script>
 </body>
 </html>
 

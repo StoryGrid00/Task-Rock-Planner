@@ -4663,6 +4663,31 @@
                             }
                             
                             .no-print {
+                            }
+                            
+                            .calendar-grid {
+                                display: grid !important;
+                                grid-template-columns: repeat(7, 1fr) !important;
+                            }
+                            
+                            .calendar-day {
+                                border: 1px solid #e0e0e0 !important;
+                                min-height: 100px !important; /* Ensure cells have height for content */
+                            }
+                            
+                            .calendar-day-header {
+                                border: 1px solid #e0e0e0 !important;
+                            }
+                            
+                            .monthly-calendar {
+                                border: 1px solid #e0e0e0 !important;
+                            }
+                            
+                            .calendar-header {
+                                display: none !important; /* Hide navigation buttons in print */
+                            }
+                            
+                            .no-print {
                                 display: none !important;
                             }
                         }

@@ -4426,6 +4426,56 @@
             border-color: #e0e0e0;
         }
 
+        /* Reset button specific styling - Red/Pink theme */
+        .reset-btn {
+            background: #ffffff;
+            color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .reset-btn:hover {
+            background: #dc3545;
+            color: #ffffff;
+            border-color: #dc3545;
+        }
+
+        body.dark-mode .reset-btn {
+            background: #2d2d2d;
+            color: #ff6b7a;
+            border-color: #ff6b7a;
+        }
+
+        body.dark-mode .reset-btn:hover {
+            background: #ff6b7a;
+            color: #000000;
+            border-color: #ff6b7a;
+        }
+
+        /* Save button specific styling - Green theme */
+        .save-progress-btn {
+            background: #ffffff;
+            color: #28a745;
+            border-color: #28a745;
+        }
+
+        .save-progress-btn:hover {
+            background: #28a745;
+            color: #ffffff;
+            border-color: #28a745;
+        }
+
+        body.dark-mode .save-progress-btn {
+            background: #2d2d2d;
+            color: #7dd84f;
+            border-color: #7dd84f;
+        }
+
+        body.dark-mode .save-progress-btn:hover {
+            background: #7dd84f;
+            color: #000000;
+            border-color: #7dd84f;
+        }
+
         /* Mobile responsive */
         @media (max-width: 768px) {
             .export-container {
@@ -4461,8 +4511,20 @@
             excelBtn.innerHTML = '📊 Export as Excel';
             excelBtn.onclick = exportToExcel;
             
+            const saveBtn = document.createElement('button');
+            saveBtn.className = 'export-btn save-progress-btn';
+            saveBtn.innerHTML = '💾 Save Progress';
+            saveBtn.onclick = manualSaveProgress;
+            
+            const resetBtn = document.createElement('button');
+            resetBtn.className = 'export-btn reset-btn';
+            resetBtn.innerHTML = '🔄 Reset All Data';
+            resetBtn.onclick = resetAllData;
+            
             exportContainer.appendChild(pdfBtn);
             exportContainer.appendChild(excelBtn);
+            exportContainer.appendChild(saveBtn);
+            exportContainer.appendChild(resetBtn);
             header.appendChild(exportContainer);
         }
 
@@ -4833,6 +4895,116 @@
             return value;
         }
 
+        // Manual Save Progress Function
+        function manualSaveProgress() {
+            try {
+                // Save current date data
+                saveDataForDate(currentDate);
+                
+                // Save weekly data
+                if (typeof saveWeekly === 'function') {
+                    saveWeekly();
+                }
+                
+                // Save monthly goals
+                if (typeof saveMonthlyGoals === 'function') {
+                    saveMonthlyGoals();
+                }
+                
+                // Save monthly events
+                if (typeof saveMonthlyEvents === 'function') {
+                    saveMonthlyEvents();
+                }
+                
+                // Show success message
+                alert('✅ Progress saved successfully!');
+            } catch (error) {
+                console.error('Error saving progress:', error);
+                alert('❌ Error saving progress. Please try again.');
+            }
+        }
+
+        // Reset All Data Function
+        function resetAllData() {
+            // Confirm with user before resetting
+            const confirmation = confirm(
+                '⚠️ WARNING: This will permanently delete ALL planner data including:\n\n' +
+                '• All daily tasks and priorities\n' +
+                '• Weekly planning data\n' +
+                '• Monthly goals and events\n' +
+                '• Meal plans and grocery lists\n' +
+                '• Mood and hydration tracking\n' +
+                '• All saved notes and captures\n\n' +
+                'This action CANNOT be undone!\n\n' +
+                'Are you sure you want to reset all data?'
+            );
+            
+            if (!confirmation) {
+                return; // User cancelled
+            }
+            
+            // Double confirmation for safety
+            const doubleConfirm = confirm(
+                '🚨 FINAL CONFIRMATION\n\n' +
+                'This is your last chance to cancel.\n\n' +
+                'Click OK to permanently delete ALL data.\n' +
+                'Click Cancel to keep your data safe.'
+            );
+            
+            if (!doubleConfirm) {
+                return; // User cancelled
+            }
+            
+            try {
+                // Clear all localStorage data
+                const keysToRemove = [];
+                
+                // Collect all keys that start with 'taskRock_' or are planner-related
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (key && (
+                        key.startsWith('taskRock_') || 
+                        key === 'monthlyGoals' || 
+                        key === 'monthlyEvents' ||
+                        key === 'currentPage' ||
+                        key === 'darkMode'
+                    )) {
+                        // Keep darkMode preference
+                        if (key !== 'darkMode') {
+                            keysToRemove.push(key);
+                        }
+                    }
+                }
+                
+                // Remove all collected keys
+                keysToRemove.forEach(key => localStorage.removeItem(key));
+                
+                // Reset in-memory data structures
+                if (typeof monthlyGoals !== 'undefined') {
+                    monthlyGoals = {};
+                }
+                if (typeof monthlyEvents !== 'undefined') {
+                    monthlyEvents = {};
+                }
+                if (typeof window._weeklyTasksNew !== 'undefined') {
+                    window._weeklyTasksNew = {0:[],1:[],2:[],3:[],4:[],5:[],6:[]};
+                }
+                if (typeof window._groceryItems !== 'undefined') {
+                    window._groceryItems = [];
+                }
+                
+                // Show success message
+                alert('✅ All data has been reset successfully!\n\nThe page will now reload.');
+                
+                // Reload the page to show clean state
+                location.reload();
+            } catch (error) {
+                console.error('Error resetting data:', error);
+                alert('❌ Error resetting data. Please try again or clear your browser cache manually.');
+            }
+        }
+
+
         // Initialize export functionality when DOM is loaded
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', addExportButtons);
@@ -4842,4 +5014,3 @@
     </script>
 </body>
 </html>
-
